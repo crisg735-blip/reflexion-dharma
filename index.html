@@ -49,6 +49,20 @@
         .serif-text {
             font-family: 'Lora', serif;
         }
+
+        /* Conceptos laterales: visibles en pantallas grandes dentro de Reflexiones */
+        .concept-sidebar {
+            display: none;
+            position: fixed;
+            top: 8.5rem;
+            width: 13.5rem;
+            z-index: 20;
+        }
+        .concept-sidebar-left { left: max(1.25rem, calc(50% - 44rem - 15rem)); }
+        .concept-sidebar-right { right: max(1.25rem, calc(50% - 44rem - 15rem)); }
+        @media (min-width: 1280px) {
+            body:has(#view-reflexiones:not(.hidden)) .concept-sidebar { display: block; }
+        }
         
     </style>
 </head>
@@ -96,6 +110,27 @@
             <a href="#mis-reflexiones" onclick="showLockedModal('Mis reflexiones'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base font-medium text-slate-400 flex justify-between items-center">Mis reflexiones <i class="fa-solid fa-lock text-xs"></i></a>
         </div>
     </header>
+
+    <!-- Conceptos del budismo tibetano: acompañan la lectura sin competir con el contenido -->
+    <aside class="concept-sidebar concept-sidebar-left" aria-label="Definición de Dharma">
+        <div class="rounded-2xl border border-[#d8e2d2] bg-[#e8eee3]/95 p-5 shadow-sm backdrop-blur-sm">
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#d7e3d0] text-[#48634c]">
+                <i class="fa-solid fa-seedling text-lg" aria-hidden="true"></i>
+            </div>
+            <h2 class="serif-text mb-2 text-xl font-semibold text-[#35513b]">Dharma</h2>
+            <p class="text-sm leading-relaxed text-[#435448]">Las enseñanzas del Buda y el camino de práctica que ayuda a comprender la realidad y transformar la manera en que vivimos.</p>
+        </div>
+    </aside>
+
+    <aside class="concept-sidebar concept-sidebar-right" aria-label="Definición de Samsara">
+        <div class="rounded-2xl border border-[#e2d7c9] bg-[#eee7df]/95 p-5 shadow-sm backdrop-blur-sm">
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#e3d7c9] text-[#80664f]">
+                <i class="fa-solid fa-arrows-rotate text-lg" aria-hidden="true"></i>
+            </div>
+            <h2 class="serif-text mb-2 text-xl font-semibold text-[#624d3b]">Samsara</h2>
+            <p class="text-sm leading-relaxed text-[#594b3e]">El ciclo de existencia condicionada, marcado por la insatisfacción y sostenido por la ignorancia, las acciones y sus consecuencias.</p>
+        </div>
+    </aside>
 
     <!-- Main Container -->
     <main class="flex-grow">
