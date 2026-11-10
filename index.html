@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f6f1">
+  <meta name="theme-color" content="#f1f8f6">
   <title>Reflexión & Dharma | Budismo tibetano y vida cotidiana</title>
   <meta name="description" content="Un espacio para acercar el budismo tibetano a la vida cotidiana: reflexiones sobre emociones, hábitos, sufrimiento, compasión y práctica consciente.">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -26,36 +26,52 @@
     tailwind.config = {
       theme: { extend: {
         colors: {
-          ink: '#26332d', muted: '#68756d', paper: '#f5f6f1',
-          sage: { 50: '#f0f3ed', 100: '#e3eade', 200: '#ccd8c3', 500: '#71866b', 700: '#496149', 800: '#354b39' },
-          clay: { 100: '#f0e8df', 200: '#e4d4c4', 700: '#80634d' }
+          ink: '#12312f', muted: '#587573', paper: '#f1f8f6',
+          sage: { 50: '#eaf7f5', 100: '#d6f0ed', 200: '#aee2dd', 300: '#7ccfc8', 400: '#4dbab3', 500: '#1fa8a3', 700: '#0f7c7f', 800: '#0b5f63', 900: '#083f43' },
+          clay: { 100: '#fbeee6', 200: '#f0d3c2', 700: '#b4472f' }
         },
         fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] },
-        boxShadow: { soft: '0 12px 35px rgba(38,51,45,.07)' }
+        spacing: { 18: '4.5rem' },
+        boxShadow: { soft: '0 12px 35px rgba(15,100,100,.10)' }
       }}
     };
   </script>
   <style>
     :root { color-scheme: light; }
-    body { background: #f5f6f1; color: #26332d; font-family: Inter, sans-serif; }
+    body { background: #f1f8f6; color: #12312f; font-family: Inter, sans-serif; }
     .serif { font-family: Lora, Georgia, serif; }
-    .site-header { background: rgba(250,251,247,.92); backdrop-filter: blur(14px); }
+    .site-header { background: rgba(241,250,248,.92); backdrop-filter: blur(14px); }
     .view { min-height: 58vh; }
-    .article-body { color: #46534b; font-size: 1.04rem; line-height: 1.9; }
+    .article-body { color: #35605e; font-size: 1.04rem; line-height: 1.9; }
+    /* Las lecturas largas tienen una columna algo más estrecha para facilitar el recorrido visual. */
+    .article-detail .article-body { max-width: 46rem; margin-left: auto; margin-right: auto; }
+    .article-detail > header { max-width: 54rem; margin-left: auto; margin-right: auto; }
+    .article-reading-time { max-width: 46rem; margin: .9rem auto 0; color: #587573; font-size: .78rem; letter-spacing: .01em; }
+    .reading-progress { position: fixed; top: 76px; left: 0; z-index: 45; width: 100%; height: 3px; background: rgba(31,168,163,.12); pointer-events: none; }
+    .reading-progress > span { display: block; width: 0; height: 100%; background: #1fa8a3; transition: width .08s linear; }
+    @media (prefers-reduced-motion: reduce) { .reading-progress > span { transition: none; } }
+
     .article-body p { margin: 0 0 1.25rem; }
-    .article-body h2 { color: #354b39; font: 600 1.45rem/1.4 Lora, Georgia, serif; margin: 2.4rem 0 .9rem; }
-    .article-body h3 { color: #354b39; font: 600 1.15rem/1.45 Lora, Georgia, serif; margin: 1.7rem 0 .65rem; }
-    .article-body strong { color: #354b39; font-weight: 650; }
-    .article-body blockquote { border-left: 3px solid #71866b; background: #f0f3ed; color: #354b39; border-radius: 0 .9rem .9rem 0; padding: 1.1rem 1.25rem; margin: 1.7rem 0; font-family: Lora, Georgia, serif; }
+    .article-body h2 { color: #0b5f63; font: 600 1.45rem/1.4 Lora, Georgia, serif; margin: 2.4rem 0 .9rem; }
+    .article-body h3 { color: #0b5f63; font: 600 1.15rem/1.45 Lora, Georgia, serif; margin: 1.7rem 0 .65rem; }
+    .article-body strong { color: #0b5f63; font-weight: 650; }
+    .article-body blockquote { border-left: 3px solid #1fa8a3; background: #e8f6f4; color: #0b5f63; border-radius: 0 .9rem .9rem 0; padding: 1.1rem 1.25rem; margin: 1.7rem 0; font-family: Lora, Georgia, serif; }
     .article-body ul, .article-body ol { padding-left: 1.4rem; margin: .5rem 0 1.4rem; }
     .article-body li { margin: .45rem 0; }
     .eyebrow { letter-spacing: .15em; }
-    .focus-ring:focus-visible { outline: 3px solid #91a98a; outline-offset: 3px; }
-    .nav-link[aria-current="page"] { color: #496149; font-weight: 700; }
-    .mobile-panel { box-shadow: 0 18px 28px rgba(38,51,45,.08); }
+    .focus-ring:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid #5cc4be; outline-offset: 3px; border-radius: .35rem; }
+    .nav-link[aria-current="page"] { color: #0f7c7f; font-weight: 700; }
+    .mobile-panel { box-shadow: 0 18px 28px rgba(15,100,100,.10); }
     .skip-link { position: absolute; left: -9999px; top: auto; }
     .skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: white; padding: .75rem 1rem; border-radius: .6rem; }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    @media print {
+      .site-header, footer, #reading-progress, #dharma-wheel, .peacock, .skip-link { display: none !important; }
+      body { background: #fff !important; color: #111 !important; }
+      .article-body { color: #222 !important; font-size: 11pt !important; line-height: 1.6 !important; }
+      .article-detail { break-inside: auto; }
+      a { color: #111 !important; text-decoration: underline; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -68,8 +84,10 @@
     "publisher":{"@type":"Person","name":"Reflexión & Dharma"}
   }
   </script>
+  <!-- Etapa 3: fuentes, referencias contextuales y criterios editoriales -->
 </head>
 <body class="antialiased selection:bg-sage-200 selection:text-ink">
+  <div id="reading-progress" class="reading-progress" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="reading-progress-fill"></span></div>
   <a class="skip-link focus-ring" href="#contenido">Saltar al contenido</a>
   <header class="site-header sticky top-0 z-40 border-b border-sage-200/70">
     <div class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -96,12 +114,12 @@
       </button>
     </div>
     <nav id="mobile-menu" class="mobile-panel hidden border-t border-sage-100 bg-white px-4 py-3 md:hidden" aria-label="Navegación móvil">
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#inicio" data-route>Inicio</a>
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#reflexiones" data-route>Reflexiones</a>
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#aviso" data-route>Antes de empezar</a>
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#budismo" data-route>Budismo tibetano</a>
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#practicas" data-route>Prácticas</a>
-      <a class="block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#fuentes" data-route>Lecturas y fuentes</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#inicio" data-route>Inicio</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#reflexiones" data-route>Reflexiones</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#aviso" data-route>Antes de empezar</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#budismo" data-route>Budismo tibetano</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#practicas" data-route>Prácticas</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#fuentes" data-route>Lecturas y fuentes</a>
       <a class="mt-2 block rounded-lg bg-sage-700 px-3 py-2.5 text-sm font-medium text-white" href="https://www.youtube.com/@ReflexionconDharma" target="_blank" rel="noopener noreferrer">Visitar canal de YouTube ↗</a>
     </nav>
   </header>
@@ -118,7 +136,7 @@
           <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">Reflexiones sobre emociones, hábitos, vínculos y dificultades cotidianas, en diálogo con las enseñanzas del budismo tibetano. Sin promesas mágicas y sin exigirnos ser perfectos.</p>
           <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a href="#reflexiones" data-route class="focus-ring inline-flex items-center justify-center rounded-xl bg-sage-700 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-sage-800">Leer las reflexiones <span class="ml-2" aria-hidden="true">→</span></a>
-            <a href="#aviso" data-route class="focus-ring inline-flex items-center justify-center rounded-xl border border-sage-200 bg-white/80 px-6 py-3.5 text-sm font-semibold text-sage-800 transition hover:bg-sage-50">Antes de empezar (Aclaración importante)</a>
+            <a href="#aviso" data-route class="focus-ring inline-flex items-center justify-center rounded-xl border border-sage-200 bg-white/80 px-6 py-3.5 text-sm font-semibold text-sage-800 transition hover:bg-sage-50">Antes de empezar</a>
           </div>
           <p class="mt-8 text-xs text-muted">También podés seguir el proyecto en <a class="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 hover:text-sage-800" href="https://www.youtube.com/@ReflexionconDharma" target="_blank" rel="noopener noreferrer">YouTube ↗</a>.</p>
         </div>
@@ -145,9 +163,9 @@
         </div>
         <a href="#reflexiones/shenpa" data-route class="focus-ring group grid overflow-hidden rounded-3xl border border-sage-200 bg-white shadow-soft transition hover:-translate-y-1 md:grid-cols-[1.05fr_.95fr]">
           <div class="flex min-h-[280px] flex-col justify-center bg-sage-800 p-8 text-white sm:p-10">
-            <span class="eyebrow text-[10px] font-bold uppercase text-sage-200">Nueva reflexión · Emociones y vínculos</span>
+            <span class="eyebrow text-[10px] font-bold uppercase text-sage-200">Reflexión destacada · Emociones y vínculos</span>
             <h3 class="serif mt-4 text-3xl font-semibold leading-tight sm:text-4xl">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h3>
-            <p class="mt-4 max-w-xl text-sm leading-7 text-sage-100">Una mirada sobre el orgullo, la hostilidad y el instante en que podemos elegir no alimentar una reacción automática.</p>
+            <p class="mt-4 max-w-xl text-sm leading-7 text-sage-100">Una mirada sobre el orgullo, la hostilidad y el instante en que podemos elegir no alimentar una reacción automática.</p><p class="card-publication-date mt-4 text-xs font-medium text-sage-200"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p>
             <span class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">Leer la reflexión <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
           </div>
           <div class="flex flex-col justify-center bg-sage-50 p-8 sm:p-10">
@@ -170,11 +188,11 @@
       </section>
 
       <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="ultimas-title">
-        <div class="mb-7 flex items-end justify-between gap-4"><div><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Archivo</p><h2 id="ultimas-title" class="serif mt-2 text-2xl font-semibold text-ink sm:text-3xl">Lecturas recientes</h2></div><a href="#reflexiones" data-route class="text-sm font-semibold text-sage-700 hover:underline">Ir al archivo →</a></div>
+        <div class="mb-7 flex items-end justify-between gap-4"><div><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Archivo</p><h2 id="ultimas-title" class="serif mt-2 text-2xl font-semibold text-ink sm:text-3xl">Otras lecturas</h2></div><a href="#reflexiones" data-route class="text-sm font-semibold text-sage-700 hover:underline">Ir al archivo →</a></div>
         <div class="grid gap-5 md:grid-cols-3">
-          <a href="#reflexiones/envidia" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Comparación</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h3><p class="mt-3 text-sm leading-7 text-muted">Qué ocurre cuando usamos la vida ajena como medida de nuestro propio valor.</p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
-          <a href="#reflexiones/habitos" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Hábitos</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h3><p class="mt-3 text-sm leading-7 text-muted">La distancia entre desear un resultado y sostener el camino que puede acercarnos.</p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
-          <a href="#reflexiones/nacimiento" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Condiciones de vida</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">La lotería del nacimiento: aceptar las condiciones sin resignarse</h3><p class="mt-3 text-sm leading-7 text-muted">Reconocer las desigualdades sin quedar definidos por ellas.</p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
+          <a href="#reflexiones/envidia" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Comparación</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h3><p class="mt-3 text-sm leading-7 text-muted">Qué ocurre cuando usamos la vida ajena como medida de nuestro propio valor.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
+          <a href="#reflexiones/habitos" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Hábitos</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h3><p class="mt-3 text-sm leading-7 text-muted">La distancia entre desear un resultado y sostener el camino que puede acercarnos.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
+          <a href="#reflexiones/nacimiento" data-route class="focus-ring rounded-2xl border border-sage-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Condiciones de vida</span><h3 class="serif mt-3 text-xl font-semibold leading-snug text-ink">La lotería del nacimiento: aceptar las condiciones sin resignarse</h3><p class="mt-3 text-sm leading-7 text-muted">Reconocer las desigualdades sin quedar definidos por ellas.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-06">Publicado el 6 de noviembre de 2026</time></p><span class="mt-5 inline-block text-sm font-semibold text-sage-700">Leer →</span></a>
         </div>
       </section>
     </section>
@@ -202,7 +220,7 @@
           <blockquote>Las reflexiones pueden ser útiles, pero no son la salvación. Y reconocer sus límites también forma parte de reflexionar.</blockquote>
           
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="#reflexiones" data-route class="inline-flex items-center justify-center rounded-xl bg-sage-700 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:bg-sage-800">Comprender esto y ver las reflexiones →</a>
+            <a href="#reflexiones" data-route class="inline-flex items-center justify-center rounded-xl bg-sage-700 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:bg-sage-800">Ir a las reflexiones →</a>
             <a href="#inicio" data-route class="inline-flex items-center justify-center rounded-xl border border-sage-200 bg-white px-6 py-3.5 text-sm font-semibold text-sage-800 transition hover:bg-sage-50">Volver al inicio</a>
           </div>
         </div>
@@ -216,25 +234,28 @@
           <a href="#inicio" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al inicio</a>
           <div class="mt-7 border-b border-sage-200 pb-8"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Archivo de reflexiones</p><h1 class="serif mt-3 text-4xl font-semibold leading-tight text-ink sm:text-5xl">La experiencia humana, mirada de cerca</h1><p class="mt-5 max-w-3xl text-base leading-8 text-muted">Emociones, frustraciones, vínculos, hábitos y preguntas que aparecen en la vida cotidiana. Una mirada realista, en diálogo con el Dharma.</p></div>
           <div class="mt-8 space-y-4">
-            <a href="#reflexiones/shenpa" data-route class="focus-ring block rounded-2xl border border-sage-300 bg-sage-50 p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Emociones y vínculos · Nueva</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h2><p class="mt-3 text-sm leading-7 text-muted">Shenpa, orgullo y el impulso de devolver el golpe. Cómo reconocer el enganche sin confundir calma con sometimiento.</p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
-            <a href="#reflexiones/envidia" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Comparación y emociones</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h2><p class="mt-3 text-sm leading-7 text-muted">La desigualdad existe, pero ¿qué hacemos con lo que despierta en nosotros?</p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
-            <a href="#reflexiones/habitos" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Hábitos y disciplina</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h2><p class="mt-3 text-sm leading-7 text-muted">Nos enamoramos de la recompensa y nos aburrimos del mecanismo.</p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
-            <a href="#reflexiones/nacimiento" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Desigualdad y aceptación</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La lotería del nacimiento: aceptar las condiciones sin resignarse</h2><p class="mt-3 text-sm leading-7 text-muted">No elegimos el punto de partida, pero podemos pensar cómo responder a las condiciones que nos tocaron.</p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
+            <a href="#reflexiones/shenpa" data-route class="focus-ring block rounded-2xl border border-sage-300 bg-sage-50 p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Emociones y vínculos</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h2><p class="mt-3 text-sm leading-7 text-muted">Shenpa, orgullo y el impulso de devolver el golpe. Cómo reconocer el enganche sin confundir calma con sometimiento.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
+            <a href="#reflexiones/envidia" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Comparación y emociones</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h2><p class="mt-3 text-sm leading-7 text-muted">La desigualdad existe, pero ¿qué hacemos con lo que despierta en nosotros?</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
+            <a href="#reflexiones/habitos" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Hábitos y disciplina</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h2><p class="mt-3 text-sm leading-7 text-muted">Nos enamoramos de la recompensa y nos aburrimos del mecanismo.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-04">Publicado el 4 de noviembre de 2026</time></p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
+            <a href="#reflexiones/nacimiento" data-route class="focus-ring block rounded-2xl border border-sage-200 bg-white p-6 transition hover:shadow-soft sm:p-7"><span class="text-[10px] font-bold uppercase tracking-widest text-sage-700">Desigualdad y aceptación</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La lotería del nacimiento: aceptar las condiciones sin resignarse</h2><p class="mt-3 text-sm leading-7 text-muted">No elegimos el punto de partida, pero podemos pensar cómo responder a las condiciones que nos tocaron.</p><p class="card-publication-date mt-3 text-xs font-medium text-sage-600"><time datetime="2026-11-06">Publicado el 6 de noviembre de 2026</time></p><span class="mt-4 inline-block text-sm font-semibold text-sage-700">Leer reflexión →</span></a>
           </div>
         </div>
 
         <article id="article-shenpa" class="article-detail hidden">
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
-          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Emociones y vínculos · Budismo tibetano</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces otra persona inicia la tensión. Pero lo que hacemos con esa tensión también depende de nosotros. Ahí aparece una oportunidad de observar la mente antes de actuar.</p></header>
+          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Emociones y vínculos · Budismo tibetano</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces la tensión empieza con algo que hace otra persona. Reconocerlo no nos obliga a cargar con su conducta; sí puede ayudarnos a decidir cómo responder y qué límites poner.</p>
+            <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
+          </header>
+          <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay personas que parecen tener facilidad para llevar cualquier conversación al conflicto. Un comentario irónico, un tono agresivo, una provocación o una respuesta desmedida pueden convertir una situación menor en una discusión. Y cuando eso ocurre, es fácil pensar que el problema está exclusivamente del otro lado.</p>
             <p>Sin embargo, hay una pregunta menos cómoda que también vale la pena hacerse: <strong>¿qué pasa dentro de mí cuando alguien consigue sacarme de quicio?</strong></p>
-            <p>No se trata de justificar la conducta ajena ni de negar que existen provocaciones, injusticias o maltratos. Se trata de observar algo más cercano: el momento en que la reacción de otra persona empieza a dirigir la nuestra.</p>
+            <p>No se trata de justificar la conducta ajena ni de negar que existen provocaciones, injusticias o maltratos. La responsabilidad por una agresión corresponde a quien la ejerce. La pregunta que abre esta reflexión es otra: ¿qué ocurre en nosotros cuando esa conducta despierta una reacción y cómo podemos decidir qué hacer con ella?</p>
 
             <h2>1. La reacción del otro puede convertirse en nuestra excusa</h2>
             <p>Acumulamos cansancio, frustración y tensión durante el día. A veces llegamos a una conversación con poca paciencia y cualquier roce puede encender algo que ya venía acumulándose.</p>
             <p>Entonces aparece alguien que levanta la voz, responde con desprecio o hace un comentario hiriente. Sentimos el impulso de devolverle el golpe. Y nuestra mente encuentra rápidamente una explicación: <em>«Yo no quería discutir, pero me habló así»</em>.</p>
-            <p>Puede ser cierto que la otra persona haya iniciado la agresión. Pero eso no significa que nuestra respuesta quede automáticamente justificada o que no tengamos ninguna participación en lo que sucede después. A veces usamos la conducta ajena como permiso para descargar una hostilidad que también estaba dentro de nosotros.</p>
+            <p>Puede ser cierto que la otra persona haya iniciado la agresión. La responsabilidad por ese acto sigue siendo suya. Al mismo tiempo, observar nuestra propia respuesta puede ayudarnos a no sumar más daño ni quedar atrapados en una escalada que no elegimos. A veces, además del enojo legítimo, aparece el impulso de devolver el golpe; reconocerlo no equivale a culparnos por lo que pasó.</p>
             <blockquote>Que alguien provoque una reacción en mí no significa que tenga que entregarle el control de lo que hago con ella.</blockquote>
             <p>Esta observación no busca repartir culpas de manera automática. Busca recuperar un margen de libertad: reconocer qué parte de la situación no controlo y qué parte de mi respuesta todavía puedo elegir.</p>
 
@@ -251,44 +272,47 @@
             <p>No siempre es fácil reconocer la diferencia. Una pregunta útil puede ser: <strong>¿estoy intentando resolver algo o solamente necesito que esta persona no tenga la última palabra?</strong></p>
 
             <h2>4. No reaccionar no significa soportar cualquier cosa</h2>
-            <p>Hay una confusión que conviene evitar: trabajar con nuestras reacciones no significa callarnos, aceptar humillaciones ni permanecer en situaciones dañinas. La práctica budista no debería utilizarse como excusa para tolerar el maltrato.</p>
-            <p>Podemos responder con firmeza sin hacerlo desde la agresión. Podemos decir que no, retirarnos de una conversación, pedir respeto o buscar ayuda si la situación lo requiere. En ocasiones, la respuesta más sensata es poner distancia.</p>
-            <p>La diferencia está en intentar que la decisión no salga únicamente del impulso de devolver el daño. No se trata de quedarse quieto por miedo, sino de actuar con mayor claridad.</p>
+            <p>Hay una confusión que conviene evitar: trabajar con nuestras reacciones no significa callarnos, aceptar humillaciones ni permanecer en situaciones dañinas. Ninguna práctica contemplativa debería utilizarse como excusa para tolerar el maltrato ni para responsabilizar a quien lo sufre.</p>
+            <p>Podemos responder con firmeza, decir que no, retirarnos de una conversación, pedir respeto o buscar apoyo. Si hay amenazas, violencia o una situación de riesgo, la prioridad no es hacer un ejercicio de introspección: es protegerse y buscar ayuda adecuada. A veces, tomar distancia es la respuesta más sensata.</p>
+            <p>Cuando existe margen para elegir cómo responder, una pausa puede ayudar a que la decisión no salga únicamente del impulso de devolver el daño. Pero poner un límite también es actuar; no hace falta hacerlo con serenidad perfecta para que sea legítimo.</p>
 
-            <h2>5. La práctica: reconocer el impulso antes de obedecerlo</h2>
-            <p>La próxima vez que una conversación te encienda, probá observar algunos momentos antes de responder:</p>
+            <h2>5. Una pausa para recuperar margen de decisión</h2>
+            <p>En una situación cotidiana, cuando hay condiciones para hacerlo, puede servir observar qué ocurre antes de responder:</p>
             <ol>
-              <li><strong>Reconocé la señal.</strong> ¿Qué cambió en el cuerpo? ¿Se tensó la mandíbula, se aceleró la respiración, apareció calor o presión?</li>
-              <li><strong>Nombrá lo que ocurre.</strong> «Estoy sintiendo bronca», «quiero defenderme», «necesito contestar ahora». No hace falta pelearse con la emoción.</li>
-              <li><strong>Hacé una pausa posible.</strong> Unas respiraciones, tomar agua o pedir unos minutos pueden alcanzar para no responder automáticamente.</li>
-              <li><strong>Elegí qué necesita la situación.</strong> Tal vez sea explicar algo, poner un límite, continuar más tarde o retirarte.</li>
+              <li><strong>La señal del cuerpo.</strong> ¿Qué cambió? Quizás se tensó la mandíbula, se aceleró la respiración o apareció calor o presión.</li>
+              <li><strong>Poner en palabras lo que ocurre.</strong> «Estoy sintiendo bronca», «quiero defenderme» o «necesito contestar ahora». Nombrar la emoción no obliga a obedecerla ni a combatirla.</li>
+              <li><strong>Una pausa posible.</strong> Unas respiraciones, tomar agua o pedir unos minutos pueden ayudar a evitar una respuesta automática.</li>
+              <li><strong>Elegir qué hace falta.</strong> Tal vez la situación necesite una explicación, un límite, continuar más tarde o tomar distancia.</li>
             </ol>
-            <p>Una frase sencilla puede ayudar: <em>«No quiero seguir esta conversación en estos términos. Podemos retomarla cuando estemos más tranquilos»</em>. No garantiza que el otro cambie, pero deja claro qué decisión estás tomando vos.</p>
+            <p>Una frase posible es: <em>«No quiero seguir esta conversación en estos términos. Podemos retomarla cuando haya condiciones para hablar con respeto»</em>. No garantiza que la otra persona cambie, pero expresa con claridad el límite que estás poniendo.</p>
 
-            <h2>La libertad de no alimentar el conflicto</h2>
-            <p>Quizás el verdadero desafío no sea conseguir que la persona reactiva deje de serlo. Eso no está completamente bajo nuestro control. El desafío es aprender a reconocer cuándo su conducta despierta algo en nosotros y cuándo empezamos a actuar desde esa herida.</p>
-            <p>La primera reacción puede aparecer sin que la hayamos elegido. Lo que hacemos después puede entrenarse. A veces podremos responder con calma; otras veces nos vamos a equivocar y tendremos que reparar. La práctica no consiste en convertirnos en personas que nunca sienten enojo, sino en dejar de obedecer cada impulso como si fuera una orden.</p>
-            <p><strong>No morder el anzuelo no es dejar que el otro gane. Es evitar que una provocación decida en quién nos convertimos durante los próximos minutos.</strong></p>
-            <p>Y, sobre todo, es recordar que la paz no depende de que nadie nos incomode. También se construye en la forma en que aprendemos a relacionarnos con esa incomodidad.</p>
+            <h2>Recuperar la posibilidad de elegir</h2>
+            <p>No siempre podremos cambiar la conducta de la otra persona, y tampoco tenemos la obligación de permanecer en una conversación que nos hace daño. Lo que sí podemos intentar, cuando la situación lo permite, es reconocer cuándo la provocación empieza a decidir por nosotros.</p>
+            <p>La primera reacción puede aparecer sin que la hayamos elegido. Después puede haber un margen —a veces pequeño— para pensar qué respuesta nos protege mejor y cuál evita sumar daño. Habrá ocasiones en las que lo consigamos y otras en las que reaccionemos como no queríamos. También podremos revisar lo ocurrido, reparar si corresponde y volver a intentarlo.</p>
+            <p><strong>No morder el anzuelo no es dejar que el otro gane. Es no confundir una reacción inmediata con la única respuesta posible.</strong></p>
+            <p>No se trata de que nada nos afecte ni de alcanzar una calma permanente. Se trata de reconocer lo que nos pasa sin entregar automáticamente a ese impulso la decisión sobre lo que hacemos después.</p>
             <div class="mt-10 rounded-2xl border border-sage-200 bg-sage-50 p-5 text-sm leading-7 text-sage-800"><strong>Para profundizar:</strong> Pema Chödrön desarrolla esta explicación de <em>shenpa</em> en <a class="font-semibold underline decoration-sage-400 underline-offset-4" href="https://tricycle.org/magazine/dont-bite-hook/" target="_blank" rel="noopener noreferrer">“Don’t Bite the Hook” (Tricycle, 2009)</a>, donde presenta la idea de quedar «enganchados» y aprender a reconocer el impulso antes de actuar.</div>
           </div>
         </article>
 
         <article id="article-envidia" class="article-detail hidden">
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
-          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Comparación y emociones</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces no nos duele que al otro le vaya bien. Nos duele que tenga algo que nosotros queremos y todavía no conseguimos.</p></header>
+          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Comparación y emociones</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces no nos duele que al otro le vaya bien. Nos duele que tenga algo que nosotros queremos y todavía no conseguimos.</p>
+            <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
+          </header>
+          <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay una forma de envidia que cuesta admitir porque no siempre nace del odio ni del deseo de quitarle algo a alguien. A veces, simplemente, te duele que otro tenga lo que vos querés y todavía no conseguiste.</p>
             <p>Ves a alguien de tu edad con un auto, una casa, una familia que lo sostiene económicamente o una vida aparentemente más sencilla. Quizás esa persona estudia en una facultad a pocas cuadras de su casa, no necesita trabajar para mantenerse o puede dedicarle todo su tiempo a construir su futuro. Mientras tanto, vos tenés que calcular horarios, plata, viajes, cansancio y obligaciones. Lo que para el otro es una parte normal de su vida, para vos puede representar años de esfuerzo.</p>
             <blockquote>Y aparece esa pregunta incómoda: ¿por qué él sí y yo no?</blockquote>
-            <p>La primera tentación es buscar una explicación que nos permita recuperar cierta tranquilidad. Decimos que tuvo suerte, que nació en una familia acomodada, que recibió todo servido o que, si hubiéramos tenido sus oportunidades, estaríamos mucho mejor. Quizás sea cierto. No todas las personas empiezan desde el mismo lugar y sería absurdo fingir que el esfuerzo individual explica todas las diferencias.</p>
-            <p>Pero hay algo más difícil de reconocer: a veces no nos alcanza con saber que el otro tuvo ventajas. Necesitamos que esas ventajas le quiten mérito, que su éxito valga menos o que su vida no sea tan buena como parece. Si no podemos tener lo que tiene, al menos queremos encontrar una razón para sentir que no lo merece tanto.</p>
+            <p>A veces intentamos explicar esa diferencia diciendo que el otro tuvo suerte, nació en una familia acomodada o recibió oportunidades que nosotros no tuvimos. Puede ser cierto. No todas las personas empiezan desde el mismo lugar y sería absurdo fingir que el esfuerzo individual explica todas las diferencias.</p>
+            <p>Pero también puede aparecer una reacción más incómoda: restarle mérito al otro, minimizar su logro o buscar defectos en su vida para sentir que la distancia no es tan grande. No ocurre siempre ni explica toda envidia, pero puede ser una manera de proteger el orgullo cuando el éxito ajeno nos enfrenta con algo que deseamos.</p>
             <p>Ahí la envidia deja de ser una simple reacción ante la desigualdad y se convierte en una forma de proteger el orgullo.</p>
             <h2>El problema no es mirar al otro, sino lo que hacemos después</h2>
             <p>Compararse es humano. El problema aparece cuando usamos la vida ajena como una medida permanente de nuestro propio valor.</p>
             <p>El auto del otro deja de ser un auto: se convierte en una prueba de que estamos atrasados. El título universitario de un compañero deja de ser un logro suyo: se transforma en un recordatorio de todo lo que todavía no conseguimos. La comodidad económica de alguien deja de ser una circunstancia: pasa a sentirse como una ofensa personal.</p>
             <p>Entonces ya no estamos mirando la vida del otro. Estamos mirando nuestra propia vida a través de ella, pero desde el peor ángulo posible.</p>
-            <p>Y cuanto más miramos, menos vemos lo que tenemos delante. La energía que podríamos usar para estudiar, trabajar, mejorar una habilidad o resolver un problema concreto se consume imaginando cómo sería nuestra vida si hubiéramos nacido en otras condiciones.</p>
+            <p>Cuando la comparación se vuelve constante, puede ocupar la atención que necesitamos para reconocer qué nos falta, qué recursos tenemos y qué alternativas están a nuestro alcance. También puede dejarnos dando vueltas a una pregunta imposible de resolver: cómo habría sido nuestra vida si hubiéramos nacido en otras condiciones.</p>
             <p>Lo paradójico es que podemos tener razón en nuestro diagnóstico y, aun así, estar equivocándonos en nuestra respuesta. Sí, el otro pudo tener más oportunidades. Sí, el reparto inicial fue desigual. Sí, algunas personas recorren distancias más cortas porque alguien les allanó el camino. Nada de eso garantiza que pasar horas resentidos vaya a modificar nuestra situación.</p>
             <blockquote>Tener razón sobre la injusticia no significa que cualquier reacción ante ella nos haga bien.</blockquote>
             <h2>Los tres dedos que apuntan hacia adentro</h2>
@@ -302,23 +326,32 @@
             <p>El sufrimiento se intensifica cuando convertimos ese deseo en una exigencia rígida: <em>necesito tener esto para estar bien; necesito alcanzar a esa persona para sentir que valgo; necesito que las circunstancias sean distintas para poder empezar a vivir.</em></p>
             <p>Desde esta perspectiva, la envidia permite observar el apego a una imagen de cómo creemos que debería ser nuestra vida. No sufrimos solamente porque carecemos de algo, sino porque nos cuesta aceptar que hoy no lo tenemos y que no controlamos todas las condiciones que determinarán cuándo, cómo o si lo conseguiremos.</p>
             <p>La práctica no consiste en repetir que nada material importa. Importa tener vivienda, tiempo, salud, dinero y oportunidades. La práctica consiste en no convertir cada diferencia material en un juicio definitivo sobre nuestro valor.</p>
-            <p>Y hay otra posibilidad: alegrarse por el bienestar ajeno sin negar la propia frustración. En el budismo se cultiva una cualidad llamada <strong>mudita</strong>, que suele traducirse como alegría por la felicidad o los logros de los demás. No exige sentir una alegría perfecta ni instantánea. Puede empezar simplemente por no alimentar el deseo de que al otro le vaya mal.</p>
-            <h2>Entonces, ¿qué hacemos con la envidia?</h2>
-            <p>Primero, dejar de disfrazarla. Si envidiamos, reconocerlo. Sin inventarnos una explicación noble ni castigarnos por sentir algo incómodo.</p>
-            <p>Después, distinguir entre lo que podemos cambiar y lo que no. Si envidiamos una habilidad, quizás podamos desarrollarla. Si envidiamos una independencia económica, podemos trabajar en un plan realista para alcanzarla. Si envidiamos una ventaja que nunca tuvimos, tendremos que reconocer que esa diferencia existe y decidir cómo vivir con ella.</p>
-            <p>Y, finalmente, aceptar algo que el orgullo detesta: otra persona puede tener una vida mejor que la nuestra en algún aspecto, y eso no constituye una humillación personal.</p>
-            <p>No todo es una competencia. No todos llegamos al mismo tiempo, desde el mismo lugar ni con los mismos recursos. La vida del otro no tiene que empeorar para que la nuestra pueda mejorar.</p>
-            <p><strong>La pregunta no es si alguna vez vamos a volver a sentir envidia. Probablemente sí. La pregunta es cuánto tiempo estamos dispuestos a entregarle.</strong> Porque mientras miramos obsesivamente el camino ajeno, el nuestro sigue transcurriendo.</p>
+            <p>Y hay otra posibilidad: alegrarse por el bienestar ajeno sin negar la propia frustración. En el budismo se cultiva una cualidad llamada <strong>mudita</strong>, que suele traducirse como alegría por la felicidad o los logros de los demás. No exige sentir una alegría perfecta ni instantánea. Puede empezar simplemente por no alimentar el deseo de que al otro le vaya mal. Cultivarla tampoco exige negar la desigualdad ni dejar de cuestionar las condiciones injustas.</p>
+            <h2>¿Qué podemos hacer con la envidia?</h2>
+            <p>Un primer paso puede ser reconocerla sin disfrazarla y sin convertirla en una condena sobre nuestro carácter. Sentir envidia no nos vuelve automáticamente malas personas; tampoco vuelve inocuas todas las cosas que podemos llegar a hacer desde ella.</p>
+            <p>Después puede ayudar distinguir qué está señalando. ¿Hay una habilidad que nos gustaría desarrollar? ¿Una necesidad material que requiere un plan y, quizás, apoyo? ¿Una oportunidad desigual que merece ser reconocida o cuestionada? No todas estas situaciones se resuelven del mismo modo, y no todas dependen únicamente de nuestro esfuerzo.</p>
+            <p>También podemos aceptar algo que al orgullo le cuesta: otra persona puede tener una vida mejor que la nuestra en algún aspecto, y eso no constituye una humillación personal.</p>
+            <p>No todo es una competencia. No todos llegamos al mismo tiempo, desde el mismo lugar ni con los mismos recursos. La vida del otro no tiene que empeorar para que la nuestra pueda mejorar; y alegrarnos por alguien tampoco exige que dejemos de desear una vida más justa para nosotros.</p>
+            <p><strong>La pregunta quizá no sea cómo dejar de sentir envidia para siempre, sino qué podemos aprender de lo que nos muestra y en qué momento la comparación deja de ayudarnos.</strong> A veces señala un deseo legítimo; otras veces alimenta una medida de valor que nunca termina de satisfacerse. Distinguir esas cosas ya es una forma de empezar a responder.</p>
           </div>
+        
+          <aside class="mt-8 rounded-2xl border border-sage-200 bg-sage-50 p-5 sm:p-6" aria-label="Fuente para profundizar">
+            <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Para profundizar · Una enseñanza budista</p>
+            <p class="mt-2 text-sm leading-7 text-sage-800">La <em>mudita</em>, o alegría por el bienestar ajeno, se presenta en la tradición budista como una de las cuatro cualidades inconmensurables. Esta enseñanza ofrece un contrapunto a la envidia; no implica negar la frustración ni las desigualdades reales que atraviesan la reflexión.</p>
+            <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://buddhistsocietiesofaustralia.org/topics/mudita/" target="_blank" rel="noopener noreferrer">Consultar explicación sobre mudita ↗</a>
+          </aside>
         </article>
 
         <article id="article-habitos" class="article-detail hidden">
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
-          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Hábitos y disciplina</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h1><p class="mt-5 text-lg leading-8 text-muted">Hay una distancia enorme entre querer un resultado y estar dispuesto a vivir el proceso que lo produce.</p></header>
+          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Hábitos y disciplina</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h1><p class="mt-5 text-lg leading-8 text-muted">Querer un resultado no significa que ya hayamos aceptado el proceso cotidiano que suele acompañarlo.</p>
+            <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
+          </header>
+          <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
-            <p>Queremos un cuerpo más marcado, pero nos cansamos de entrenar. Queremos aprobar las materias, pero nos cuesta sentarnos a estudiar cuando estamos agotados. Queremos ganar más dinero, pero no siempre tenemos la paciencia de desarrollar las habilidades que podrían permitirnos hacerlo. Queremos disciplina, aunque muchas veces esperamos sentir ganas antes de actuar.</p>
+            <p>Queremos un cuerpo más marcado, pero nos cansamos de entrenar. Queremos aprobar las materias, pero nos cuesta sentarnos a estudiar cuando estamos agotados. Queremos ganar más dinero, pero no siempre tenemos la paciencia de desarrollar las habilidades que podrían acercarnos a ese objetivo. Queremos disciplina, aunque muchas veces esperamos sentir ganas antes de actuar.</p>
             <p>La contradicción no es que tengamos deseos ambiciosos. Es que imaginamos el resultado con mucha más facilidad de la que aceptamos sus costos cotidianos.</p>
-            <p>Es fácil visualizar un cuerpo que nos gusta. Mucho menos atractivo es repetir ejercicios durante meses, controlar las comidas, dormir mejor y aceptar que algunos días rendiremos poco. Es fácil imaginarse recibido. Lo difícil es atravesar una tarde de estudio en la que no entendemos nada, tenemos sueño y todavía quedan varias horas de material.</p>
+            <p>Es fácil visualizar un cuerpo que nos gusta. Mucho menos atractivo es repetir ejercicios durante meses, organizar la alimentación, dormir mejor y aceptar que algunos días rendiremos poco. Es fácil imaginarse recibido. Lo difícil es atravesar una tarde de estudio en la que no entendemos nada, tenemos sueño y todavía quedan varias horas de material.</p>
             <blockquote>Nos enamoramos de la recompensa y nos aburrimos del mecanismo.</blockquote>
             <h2>El costo de hacer algo que no tiene recompensa inmediata</h2>
             <p>Buena parte del progreso depende de actividades que, vistas de manera aislada, parecen insignificantes.</p>
@@ -329,28 +362,41 @@
             <h2>Cuando el progreso de los demás se convierte en una amenaza</h2>
             <p>La comparación vuelve a aparecer. Vemos a alguien que lleva años entrenando y queremos su físico, pero no sus años de entrenamiento. Vemos a un estudiante que avanza rápido y queremos su resultado, sin conocer sus conocimientos previos, sus horarios o el apoyo del que dispone.</p>
             <p>La imagen final es visible. El proceso, no tanto.</p>
-            <p>Por eso comparar nuestro presente con el resultado de otra persona puede ser una forma particularly injusta de evaluar nuestro propio avance. Estamos enfrentando nuestra etapa de construcción con el producto terminado de alguien más.</p>
+            <p>Por eso comparar nuestro presente con el resultado de otra persona puede ser una forma especialmente injusta de evaluar nuestro propio avance. Estamos enfrentando nuestra etapa de construcción con el producto terminado de alguien más.</p>
             <p>Eso no significa que debamos dejar de mirar a quienes admiramos. Podemos aprender de ellos. La diferencia está en usar la comparación como información y no como condena.</p>
             <h2>La disciplina no consiste en maltratarse</h2>
-            <p>Existe una versión bastante infantil de la disciplina que confunde el progreso con el castigo. Si no entrenamos, somos débiles. Si descansamos, somos vagos. Si nos equivocamos con la comida o postergamos el estudio, arruinamos todo.</p>
+            <p>Existe una idea rígida de la disciplina que confunde el progreso con el castigo. Si no entrenamos, somos débiles. Si descansamos, somos vagos. Si nos equivocamos con la comida o postergamos el estudio, sentimos que arruinamos todo.</p>
             <p>Esa lógica convierte cualquier desviación en una sentencia sobre nuestro carácter. Y cuando fallamos, en lugar de retomar el proceso, nos castigamos, abandonamos o prometemos empezar de cero el lunes.</p>
             <p>Pero una vida no se construye a partir de jornadas perfectas. Se construye con una estructura que permita continuar incluso después de una jornada mediocre.</p>
-            <p>Si el plan exige condiciones ideales para funcionar, probablemente sea un mal plan. La disciplina útil es menos épica: consiste en diseñar una rutina que podamos sostener, cumplir lo importante con suficiente regularidad y corregir cuando algo no funciona.</p>
-            <h2>Una lectura desde el budismo</h2>
-            <p>El budismo distingue entre la intención y la práctica efectiva. Desear estar libre del sufrimiento no equivale a entrenar la mente para relacionarse de otra manera con él. Entender intelectualmente una enseñanza tampoco significa que podamos aplicarla automáticamente cuando estamos enojados, cansados o frustrados.</p>
-            <p>La práctica requiere repetición, atención y paciencia. También invita a observar nuestra aversión a la incomodidad. A veces, además del esfuerzo físico o intelectual, sufrimos por la historia que construimos alrededor de ese esfuerzo: <em>esto no debería costarme tanto, ya tendría que haber avanzado, no tendría que sentirme así.</em></p>
-            <p>A la dificultad original le agregamos una pelea contra el hecho de estar atravesándola. Esto no significa que debamos aceptar cualquier nivel de agotamiento ni ignorar nuestros límites. Significa aprender a distinguir entre una dificultad que requiere descanso o un cambio de estrategia y una incomodidad normal que aparece cuando hacemos algo que todavía no dominamos.</p>
-            <p><strong>No toda incomodidad es una señal para abandonar. Tampoco toda persistencia es virtud.</strong></p>
+            <p>Si el plan exige condiciones ideales para funcionar, probablemente necesite revisarse. La disciplina útil es menos épica: consiste en diseñar una rutina que podamos sostener, cumplir lo importante con suficiente regularidad y corregir cuando algo no funciona. Descansar, reducir una exigencia o pedir ayuda no siempre es abandonar; a veces es lo que permite continuar sin romperse.</p>
+            <h2>Intención, práctica y paciencia</h2>
+            <p>El diálogo con el budismo en esta reflexión es limitado: no pretende deducir una teoría moderna de los hábitos a partir del karma ni afirmar que repetir una conducta garantice un resultado. Toma una distinción más sencilla como punto de partida: tener la intención de cambiar no es lo mismo que haber desarrollado la capacidad de sostener ese cambio en la vida cotidiana.</p>
+            <p>La práctica también puede invitarnos a observar nuestra relación con la incomodidad. A veces, además del esfuerzo físico o intelectual, sufrimos por la historia que construimos alrededor de ese esfuerzo: «esto no debería costarme tanto», «ya tendría que haber avanzado», «no tendría que sentirme así».</p>
+            <p>A la dificultad original podemos agregarle una pelea contra el hecho de estar atravesándola. Esto no significa que debamos aceptar cualquier nivel de agotamiento ni ignorar nuestros límites. A veces hace falta descansar, cambiar de estrategia o reconocer que una meta ya no tiene sentido. Otras veces aparece una incomodidad esperable cuando hacemos algo que todavía no dominamos.</p>
+            <p><strong>No toda incomodidad es una señal para abandonar. Pero tampoco todo dolor es una prueba de crecimiento, ni toda persistencia es una virtud.</strong></p>
+            <h2>Volver al proceso cuando algo se interrumpe</h2>
+            <p>Una rutina no demuestra su utilidad solamente cuando todo sale bien. También importa qué ocurre cuando aparece una semana difícil, nos enfermamos, cambia nuestro horario o perdemos continuidad. En esos momentos, en lugar de interpretar la interrupción como un fracaso definitivo, puede servir revisar qué la provocó y qué versión del plan sería posible ahora.</p>
+            <p>Quizás haya que reducir la exigencia durante un tiempo, cambiar el horario, dividir una tarea o pedir ayuda. Tal vez descubramos que el objetivo necesita ajustarse. Retomar no siempre significa volver exactamente al punto anterior; puede significar construir una forma más realista de continuar.</p>
             <h2>El resultado no está completamente bajo nuestro control</h2>
             <p>Podemos hacer muchas cosas bien y no conseguir exactamente lo que queremos. Podemos estudiar mucho y desaprobar. Podemos entrenar de manera constante y progresar más lentamente de lo esperado. Podemos trabajar durante años y no alcanzar el nivel económico que imaginábamos.</p>
             <p>Negar esa posibilidad sería reemplazar la disciplina por una promesa falsa. El esfuerzo importa, pero sus resultados también dependen de las circunstancias, los recursos, el azar y las limitaciones de cada situación.</p>
-            <p><strong>Podemos comprometernos seriamente con una meta sin exigir que el proceso nos garantice el resultado.</strong> La pregunta no es solamente cuánto deseamos conseguir algo. Es cuánto estamos dispuestos a practicar, corregir, descansar y volver a intentarlo sin convertir cada demora en una crisis personal.</p>
+            <p>Podemos comprometernos seriamente con una meta sin exigir que el proceso nos garantice el resultado. También podemos revisar si el costo que estamos pagando sigue teniendo sentido. Sostener algo no significa aferrarse a cualquier plan, sin importar cuánto nos desgaste.</p>
+            <p><strong>La disciplina no debería ser una deuda permanente con la versión ideal de nosotros mismos.</strong> Puede ser una manera de cuidar lo que nos importa, con constancia cuando sea posible, flexibilidad cuando haga falta y espacio para reconocer que somos personas, no máquinas de cumplir objetivos.</p>
           </div>
+        
+          <aside class="mt-8 rounded-2xl border border-sage-200 bg-sage-50 p-5 sm:p-6" aria-label="Fuente para profundizar">
+            <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Para profundizar · Karma y patrones de conducta</p>
+            <p class="mt-2 text-sm leading-7 text-sage-800">En el budismo tibetano, el karma no se reduce a un destino predeterminado: Study Buddhism explica el concepto en relación con los impulsos mentales y los patrones de conducta. Es una aproximación tradicional específica, no una equivalencia exacta entre karma y los hábitos estudiados por la psicología contemporánea.</p>
+            <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/es/puntos-basicos/que-es/que-es-el-karma" target="_blank" rel="noopener noreferrer">Leer: ¿Qué es el karma? ↗</a>
+          </aside>
         </article>
 
         <article id="article-nacimiento" class="article-detail hidden">
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
-          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Desigualdad y aceptación</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La lotería del nacimiento: aceptar las condiciones sin resignarse</h1><p class="mt-5 text-lg leading-8 text-muted">Nadie elige las condiciones desde las que empieza. Reconocerlo no elimina nuestra capacidad de actuar, pero cambia la manera de entender el camino.</p></header>
+          <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Desigualdad y aceptación</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La lotería del nacimiento: aceptar las condiciones sin resignarse</h1><p class="mt-5 text-lg leading-8 text-muted">Nadie elige las condiciones desde las que empieza. Reconocerlo no elimina nuestra capacidad de actuar, pero cambia la manera de entender el camino.</p>
+            <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-06">Publicado el viernes 6 de noviembre de 2026</time></p>
+          </header>
+          <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>No elegimos nuestra familia, el lugar en el que nacemos, los recursos económicos que tendremos durante la infancia ni las oportunidades que estarán disponibles cuando comencemos a tomar nuestras propias decisiones.</p>
             <p>Algunas personas crecen con una red de apoyo que les permite equivocarse sin poner en riesgo su estabilidad. Otras tienen que trabajar mientras estudian, colaborar con los gastos familiares o resolver problemas que sus compañeros ni siquiera necesitan considerar.</p>
@@ -360,26 +406,35 @@
             <p>Esas ventajas no garantizan el éxito. Tener apoyo no convierte automáticamente a alguien en competente, responsable o feliz. Pero sí puede reducir los obstáculos que debe enfrentar.</p>
             <p>Del mismo modo, carecer de esas ventajas no convierte a una persona en incapaz. Sin embargo, puede obligarla a gastar recursos físicos y mentales en cuestiones que otros no tienen que resolver. Por eso resulta pobre explicar todas las diferencias apelando exclusivamente al mérito. El esfuerzo individual importa, pero no actúa en el vacío.</p>
             <p>También resulta equivocado concluir que, porque las condiciones iniciales son desiguales, las decisiones personales carecen de importancia. Las dos cosas pueden ser ciertas al mismo tiempo: no todos tenemos las mismas oportunidades y nuestras acciones siguen teniendo consecuencias.</p>
-            <h2>La trampa de vivir mirando la partida de los demás</h2>
-            <p>Reconocer la desigualdad puede ayudarnos a comprender mejor el mundo. Pero también podemos quedar atrapados en ella.</p>
+            <h2>Cuando la comparación ocupa todo el horizonte</h2>
+            <p>Reconocer la desigualdad es necesario para comprender mejor el mundo y discutir qué debería cambiar. El problema no está en mirar las condiciones de los demás ni en señalar una injusticia. Aparece cuando la comparación termina ocupando todo el horizonte y ya no nos permite pensar qué respuestas individuales o colectivas podrían tener sentido.</p>
             <p>Imaginemos a alguien que trabaja muchas horas y estudia cuando puede. Observa que otro estudiante dispone de más tiempo, recibe ayuda económica y avanza con mayor facilidad. Su frustración es comprensible. La diferencia existe y tiene consecuencias concretas.</p>
-            <p>Pero si cada vez que se sienta a estudiar termina pensando en todo lo que el otro tiene, la desigualdad empieza a ocupar también el espacio mental que necesita para avanzar. No porque la injusticia sea imaginaria, sino porque la preocupación repetida no necesariamente se transforma en una acción útil.</p>
-            <p>Podemos identificar qué nos falta, buscar recursos, pedir ayuda, organizar mejor nuestro tiempo, reclamar derechos o participar en cambios colectivos. También podemos reconocer que hay obstáculos que no se resolverán rápidamente. Lo que no necesitamos hacer es fingir que esas condiciones no existen ni permitir que definan cada aspecto de nuestra identidad.</p>
+            <p>Pero si cada vez que se sienta a estudiar vuelve una y otra vez a la vida del otro, la comparación puede ocupar también el espacio que necesita para decidir qué hacer. No porque la injusticia sea imaginaria ni porque deba dejar de importarle, sino porque pensar repetidamente en una diferencia no siempre alcanza para modificarla.</p>
+            <p>Según la situación, puede tener sentido identificar qué recursos faltan, pedir ayuda, organizar el tiempo disponible, reclamar derechos o participar en cambios colectivos. También hay obstáculos que no se resolverán rápidamente y pérdidas que no pueden compensarse por completo. Reconocer ese límite no obliga a fingir que las condiciones no existen ni a permitir que definan cada aspecto de nuestra identidad.</p>
             <h2>Aceptar no significa aprobar</h2>
             <p>Esta distinción es fundamental. Aceptar que nacimos en determinadas condiciones significa reconocer un hecho. No significa afirmar que esas condiciones son justas, que no deberían cambiar o que quienes las padecen deben resignarse.</p>
             <p>Podemos aceptar que una situación existe y, al mismo tiempo, trabajar para modificarla. Podemos reconocer que alguien tuvo más oportunidades sin despreciarlo por eso. Podemos admitir que nuestra propia situación es difícil sin convertirla en una explicación universal de todos nuestros resultados. Y podemos cuestionar una injusticia sin permitir que el resentimiento sea la única relación que mantenemos con ella.</p>
             <p>La aceptación lúcida no elimina la acción. Permite dirigirla hacia algo concreto.</p>
-            <h2>Una lectura desde el budismo</h2>
-            <p>El budismo tibetano pone un énfasis importante en la interdependencia: nuestra vida no surge de una voluntad aislada, sino de múltiples condiciones. La familia, la sociedad, el cuerpo, la educación, las relaciones y las circunstancias participan en lo que somos y en las posibilidades que tenemos.</p>
-            <p>Esta mirada cuestiona la idea de que cada persona sea completamente responsable de todo lo que le sucede. Pero también cuestiona la idea de un yo fijo, definido para siempre por su historia. Nuestras condiciones nos influyen, aunque no agoten todas nuestras posibilidades.</p>
-            <p>La impermanencia recuerda que las situaciones cambian, pero no promete que todos los cambios serán favorables ni que ocurrirán a tiempo para satisfacer nuestros deseos. La práctica consiste en responder con la mayor claridad posible a las circunstancias presentes, sin confundirlas con una identidad definitiva.</p>
-            <p>Y la compasión nos invita a extender esa comprensión a los demás. Si reconocemos que nuestras propias decisiones están condicionadas por circunstancias que no elegimos, resulta más difícil juzgar superficialmente la vida ajena.</p>
+            <h2>Condiciones, interdependencia y responsabilidad compartida</h2>
+            <p>Las enseñanzas budistas sobre el surgimiento dependiente permiten observar que los fenómenos aparecen en relación con causas y condiciones. En esta reflexión usamos esa idea, de manera contemporánea, para pensar cómo influyen la familia, la sociedad, el cuerpo, la educación y las oportunidades. Es una aplicación reflexiva del concepto, no una explicación budista específica de la desigualdad económica.</p>
+            <p>Esta perspectiva invita a cuestionar la idea de que cada persona sea completamente responsable de todo lo que le sucede. Pero no implica que las circunstancias determinen por completo cada resultado ni que las decisiones personales carezcan de importancia. Nuestra vida está condicionada por factores que no elegimos y, al mismo tiempo, participamos —con márgenes muy distintos— en lo que hacemos con ellos.</p>
+            <p>La impermanencia señala que ninguna situación permanece idéntica para siempre; no garantiza, sin embargo, que las condiciones injustas cambien por sí solas ni que lo hagan a tiempo. Por eso, reconocer que algo es cambiante no reemplaza la necesidad de actuar cuando hay algo que puede y debe modificarse.</p>
+            <p>La compasión también puede ampliar la mirada: comprender que las decisiones ajenas están condicionadas por circunstancias que desconocemos puede volvernos menos rápidos para juzgar y más atentos a las condiciones que necesitan cambiar.</p>
             <h2>¿Qué hacemos con el lugar que nos tocó?</h2>
             <p>No hace falta romantizar las dificultades. Pasarla mal no te vuelve automáticamente más sabio, más fuerte ni mejor persona. Algunas dificultades enseñan; otras desgastan, limitan y podrían haberse evitado. Tampoco tenemos que agradecer cada obstáculo como si hubiera sido necesario para convertirnos en quienes somos.</p>
-            <p>Podemos lamentar lo que no tuvimos. Podemos reconocer la bronca por las oportunidades perdidas. Podemos desear haber empezado desde otro lugar. Pero llega un momento en el que debemos distinguir entre elaborar esa realidad y repetirla indefinidamente.</p>
-            <p>Si una condición puede cambiarse, conviene buscar cómo. Si requiere una respuesta colectiva, conviene reconocerlo y actuar junto con otros. Si no puede modificarse, habrá que aprender a vivir con sus consecuencias sin fingir que no duelen.</p>
-            <blockquote>La vida no es una competencia justa, pero eso no significa que nuestra única alternativa sea vivir resentidos con quienes empezaron más adelante. No elegimos todas las cartas que recibimos. Sí podemos examinar cómo jugamos con ellas, qué reglas injustas estamos dispuestos a cuestionar y qué clase de persona queremos ser mientras intentamos cambiar nuestra situación.</blockquote>
+            <p>Podemos lamentar lo que no tuvimos, sentir bronca por las oportunidades perdidas y desear haber empezado desde otro lugar. No siempre es posible elaborar esas experiencias rápidamente, y tampoco hace falta fingir que dejaron de doler. Con el tiempo, quizás podamos distinguir qué parte necesita ser reconocida y acompañada, y qué parte todavía admite alguna respuesta.</p>
+            <p>Cuando una condición puede modificarse, la pregunta es qué recursos, apoyos o decisiones pueden ayudar. Cuando el problema es colectivo, la respuesta no puede recaer solamente en el esfuerzo individual. Y cuando algo no puede cambiarse, tal vez haga falta encontrar formas de transitar sus consecuencias sin negar el dolor ni convertirlo en la totalidad de nuestra historia.</p>
+            <blockquote>Reconocer desde dónde partimos no significa aceptar que así deben ser las cosas. Puede ser el comienzo de una mirada más honesta sobre qué nos condiciona, qué apoyos necesitamos y qué vale la pena cambiar, solos y junto con otros.</blockquote>
           </div>
+        
+          <aside class="mt-8 rounded-2xl border border-sage-200 bg-sage-50 p-5 sm:p-6" aria-label="Fuentes para profundizar">
+            <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Para profundizar · Condiciones e desigualdad</p>
+            <p class="mt-2 text-sm leading-7 text-sage-800">La idea budista de surgimiento dependiente permite examinar cómo nuestra experiencia está condicionada por múltiples causas. Para estudiar la desigualdad económica desde datos —sin confundir ese análisis social con una doctrina religiosa— puede consultarse la base de UNU-WIDER.</p>
+            <div class="mt-3 flex flex-col gap-2 text-sm">
+              <a class="font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/es/glossary/dependent-arising" target="_blank" rel="noopener noreferrer">Study Buddhism: surgimiento dependiente ↗</a>
+              <a class="font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://www.wider.unu.edu/database/world-income-inequality-database-wiid" target="_blank" rel="noopener noreferrer">UNU-WIDER: base de datos sobre desigualdad de ingresos ↗</a>
+            </div>
+          </aside>
         </article>
       </div>
     </section>
@@ -391,11 +446,68 @@
         <h1 class="serif mt-3 max-w-3xl text-4xl font-semibold leading-tight text-ink sm:text-5xl">Budismo tibetano: una tradición para estudiar y practicar</h1>
         <p class="mt-6 max-w-3xl text-lg leading-8 text-muted">El budismo tibetano reúne enseñanzas, prácticas contemplativas, filosofía y distintas tradiciones de transmisión. Este espacio busca acercar algunos conceptos con respeto, sin reducir una tradición amplia a frases motivacionales.</p>
         <div class="mt-10 grid gap-5 md:grid-cols-2">
-          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Enseñanzas</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Dharma</h2><p class="mt-3 text-sm leading-7 text-muted">En el contexto budista, Dharma puede referirse a las enseñanzas del Buda y también a la realidad o verdad que esas enseñanzas buscan señalar. No es solo información para acumular: es algo que se estudia, contempla y lleva a la experiencia.</p></article>
-          <article class="rounded-2xl border border-clay-200 bg-clay-100/70 p-7"><span class="text-xs font-bold uppercase tracking-widest text-clay-700">Existencia condicionada</span><h2 class="serif mt-3 text-2xl font-semibold text-clay-700">Samsara</h2><p class="mt-3 text-sm leading-7 text-muted">Samsara describe el ciclo de existencia condicionada, atravesado por la insatisfacción y la repetición de patrones impulsados por la ignorancia, el apego y la aversión. No conviene reducirlo solamente a «estar de mal humor» o a una metáfora psicológica: tiene un sentido doctrinal más amplio.</p></article>
-          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Comprensión</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Las cuatro nobles verdades</h2><p class="mt-3 text-sm leading-7 text-muted">Presentan una forma de investigar el sufrimiento o insatisfacción, sus causas, la posibilidad de su cesación y el camino que conduce a esa cesación. Son un marco central de las enseñanzas budistas.</p></article>
-          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Relación con los demás</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Compasión y bodhicitta</h2><p class="mt-3 text-sm leading-7 text-muted">La compasión es la aspiración de que los seres estén libres del sufrimiento. En el camino Mahayana, bodhicitta expresa la intención de alcanzar el despertar para el beneficio de todos los seres.</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Enseñanzas</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Dharma</h2><p class="mt-3 text-sm leading-7 text-muted">En el contexto budista, Dharma puede referirse a las enseñanzas del Buda y también a la realidad o verdad que esas enseñanzas buscan señalar. No es solo información para acumular: es algo que se estudia, contempla y lleva a la experiencia.</p><details class="deep"><summary><span class="more">Profundizar más</span><span class="less">Mostrar menos</span></summary><div class="deep-body">
+<h3>Una palabra con muchas capas</h3>
+<p>La palabra sánscrita <em>dharma</em> viene de una raíz que significa «sostener»: lo que sostiene, lo que es tal como es. En tibetano se dice <em>chö</em>. Según el contexto puede nombrar las enseñanzas del Buda, la verdad o realidad que señalan, los fenómenos en general o la práctica virtuosa. Por eso conviene preguntar siempre en qué sentido se usa.</p>
+<h3>Dos aspectos del Dharma</h3>
+<ul>
+<li><strong>Dharma de la transmisión:</strong> las enseñanzas que se han preservado de maestro a discípulo, en textos y en palabra oral.</li>
+<li><strong>Dharma de la realización:</strong> la comprensión y las cualidades que surgen en quien estudia y practica de verdad.</li>
+</ul>
+<h3>Una de las Tres Joyas</h3>
+<p>Buda, Dharma y Sangha son las Tres Joyas, el refugio básico del budismo. Una imagen tradicional lo explica así: el Buda es como el médico, el Dharma es la medicina y la Sangha, la comunidad, son quienes acompañan en el tratamiento. La medicina no cura por tenerla guardada: hay que tomarla.</p>
+<h3>Escuchar, reflexionar, meditar</h3>
+<p>La tradición tibetana propone un recorrido en tres pasos: <strong>escuchar o estudiar</strong> las enseñanzas, <strong>reflexionar</strong> hasta comprender su sentido por cuenta propia y <strong>meditar</strong> para que esa comprensión se vuelva experiencia. Saltearse alguno suele dejar la enseñanza en pura información o en pura opinión.</p>
+<h3>Linajes y transmisión</h3>
+<p>En el Tíbet el Dharma se transmitió a través de linajes (Nyingma, Kagyü, Sakya y Gelug, entre otros), cada uno con sus énfasis, textos y métodos. La relación con un maestro cualificado ocupa un lugar central. Por eso este sitio ofrece una introducción y no un sustituto de ese camino.</p>
+</div></details></article>
+          <article class="rounded-2xl border border-clay-200 bg-clay-100/70 p-7"><span class="text-xs font-bold uppercase tracking-widest text-clay-700">Existencia condicionada</span><h2 class="serif mt-3 text-2xl font-semibold text-clay-700">Samsara</h2><p class="mt-3 text-sm leading-7 text-muted">Samsara describe el ciclo de existencia condicionada, atravesado por la insatisfacción y la repetición de patrones impulsados por la ignorancia, el apego y la aversión. No conviene reducirlo solamente a «estar de mal humor» o a una metáfora psicológica: tiene un sentido doctrinal más amplio.</p><details class="deep"><summary><span class="more">Profundizar más</span><span class="less">Mostrar menos</span></summary><div class="deep-body">
+<h3>Una existencia condicionada</h3>
+<p><em>Samsara</em> nombra el ciclo de nacimientos, muertes y renacimientos condicionado por la ignorancia, las acciones (karma) y las emociones perturbadoras. No se refiere simplemente a un lugar al que se va: describe una forma de existencia que, mientras persisten sus causas, continúa reproduciendo experiencias insatisfactorias.</p>
+<h3>Los tres venenos</h3>
+<p>El ciclo se mantiene por tres raíces: la <strong>ignorancia</strong> (no ver cómo son realmente las cosas), el <strong>apego</strong> (aferrarse a lo que agrada) y la <strong>aversión</strong> (rechazar lo que molesta). En la tradición tibetana se las representa en el centro de la Rueda de la Vida como un gallo, una serpiente y un cerdo, y esa imagen se pinta con frecuencia a la entrada de los templos.</p>
+<h3>La Rueda de la Vida</h3>
+<p>La representación tradicional reúne los seis reinos de existencia y, en el borde exterior, los doce eslabones del origen dependiente. Estos eslabones describen cómo se condiciona y reproduce la existencia samsárica; no conviene imaginarlos como una fila mecánica en la que cada factor actúa aislado, porque cada uno depende de condiciones. Yama, que sostiene la rueda, recuerda la impermanencia y la muerte.</p>
+<h3>El ciclo de renacimientos y la experiencia cotidiana</h3>
+<p>En las explicaciones tradicionales, samsara se refiere al ciclo de renacimientos en los distintos reinos de existencia. También puede usarse una lectura contemplativa para observar, en la experiencia cotidiana, cómo el apego, la aversión y la confusión alimentan respuestas repetitivas. Esta segunda lectura puede ayudar a acercar la enseñanza, pero no reemplaza ni agota su sentido tradicional.</p>
+<h3>¿Y cuál es la salida?</h3>
+<p>El budismo enseña que es posible alcanzar la liberación de samsara: el <strong>nirvana</strong>, entendido como la cesación del sufrimiento y de sus causas. En la filosofía Madhyamaka asociada a Nāgārjuna se analiza la relación entre samsara y nirvana a partir de la vacuidad y de las dos verdades. Esto no significa que, en la experiencia cotidiana, sufrimiento y liberación sean indistinguibles; es una tesis filosófica compleja que no conviene reducir a una frase.</p>
+</div></details><p class="mt-4 text-xs leading-6 text-muted">Para profundizar: <a class="font-semibold text-sage-700 underline underline-offset-4" href="https://studybuddhism.com/en/advanced-studies/lam-rim/samsara-nirvana/perpetuating-samsara-the-12-links-of-dependent-arising" target="_blank" rel="noopener noreferrer">Alexander Berzin, explicación de los doce eslabones del origen dependiente ↗</a>.</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Comprensión</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Las cuatro nobles verdades</h2><p class="mt-3 text-sm leading-7 text-muted">Presentan una forma de investigar el sufrimiento o insatisfacción, sus causas, la posibilidad de su cesación y el camino que conduce a esa cesación. Son un marco central de las enseñanzas budistas.</p><details class="deep"><summary><span class="more">Profundizar más</span><span class="less">Mostrar menos</span></summary><div class="deep-body">
+<h3>El primer discurso</h3>
+<p>Se cuenta que el Buda las enseñó en su primer sermón, en Sarnath, un hecho que la tradición llama «poner en movimiento la rueda del Dharma». De ahí la rueda de ocho radios, símbolo budista por excelencia.</p>
+<h3>Un diagnóstico, una causa, una cura, un tratamiento</h3>
+<ul>
+<li><strong>Dukkha, el sufrimiento o insatisfacción:</strong> hay que <em>reconocerlo</em>. La palabra es difícil de traducir; abarca desde el dolor evidente hasta una insatisfacción sutil que acompaña incluso a lo agradable.</li>
+<li><strong>Su origen:</strong> hay que <em>abandonarlo</em>. Se señala el aferramiento y la ignorancia que lo alimentan.</li>
+<li><strong>Su cesación:</strong> hay que <em>realizarla</em>. Es la posibilidad de estar libre de ese sufrimiento.</li>
+<li><strong>El camino:</strong> hay que <em>cultivarlo</em>. Es el conjunto de prácticas que conduce a esa cesación.</li>
+</ul>
+<h3>Tres niveles de sufrimiento</h3>
+<p>La tradición distingue el <strong>sufrimiento del dolor</strong> (lo evidente), el <strong>sufrimiento del cambio</strong> (lo placentero que no dura) y el <strong>sufrimiento omnipresente condicionado</strong> (la insatisfacción de fondo de toda existencia condicionada).</p>
+<h3>El Noble Óctuple Sendero</h3>
+<p>La cuarta verdad se desarrolla en ocho aspectos, que suelen agruparse en tres entrenamientos: <strong>sabiduría</strong> (visión e intención correctas), <strong>conducta ética</strong> (palabra, acción y medio de vida correctos) y <strong>concentración</strong> (esfuerzo, atención plena y concentración correctos).</p>
+<h3>¿Por qué «nobles»?</h3>
+<p>Se las llama nobles porque quienes las comprenden directamente se llaman <em>āryas</em>, «nobles». No es una verdad que se acepte por fe, sino una forma de investigar que cada persona puede poner a prueba. En el Tíbet estas ideas se desarrollan después en los textos sobre las etapas del camino (<em>lamrim</em>).</p>
+</div></details><p class="mt-4 text-xs leading-6 text-muted">Fuente para ampliar: <a class="font-semibold text-sage-700 underline underline-offset-4" href="https://studybuddhism.com/es/estudios-avanzados/lam-rim/los-cinco-caminos-hacia-la-liberacion-y-la-iluminacion/el-dalai-lama-sobre-las-cuatro-verdades-nobles" target="_blank" rel="noopener noreferrer">explicación del Dalái Lama sobre las cuatro verdades nobles ↗</a>.</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Relación con los demás</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Compasión y bodhicitta</h2><p class="mt-3 text-sm leading-7 text-muted">La compasión es la aspiración de que los seres estén libres del sufrimiento. En el camino Mahayana, bodhicitta expresa la intención de alcanzar el despertar para el beneficio de todos los seres.</p><details class="deep"><summary><span class="more">Profundizar más</span><span class="less">Mostrar menos</span></summary><div class="deep-body">
+<h3>Compasión y amor benevolente</h3>
+<p>Se enseñan como dos deseos complementarios: el <strong>amor benevolente</strong> (<em>maitri</em>) es desear que los seres sean felices, y la <strong>compasión</strong> (<em>karuna</em>) es desear que se liberen del sufrimiento y de sus causas. La compasión budista no es lástima ni se agota en compartir el dolor ajeno: se sostiene con claridad y con la voluntad de actuar.</p>
+<h3>Qué es bodhicitta</h3>
+<p>Significa «mente de despertar». Es la decisión de alcanzar la budeidad no solo para uno mismo sino para poder ayudar a todos los seres. Quien la cultiva se llama <strong>bodhisattva</strong>. Shantideva, en su <em>Bodhicaryavatara</em>, distingue la bodhicitta de <strong>aspiración</strong> (desear ese camino) y la de <strong>aplicación</strong> (ponerse en marcha con las prácticas).</p>
+<h3>Bodhicitta relativa y última</h3>
+<p>En muchas presentaciones del Mahayana, especialmente en explicaciones tibetanas, se distingue la bodhicitta <strong>relativa</strong> —la aspiración altruista de alcanzar el despertar para beneficiar a todos los seres— de la bodhicitta <strong>última</strong>, vinculada con la comprensión directa de la vacuidad. Las expresiones y sus matices pueden variar según el texto y la tradición. La imagen de las dos alas recuerda que sabiduría y compasión se cultivan juntas.</p>
+<h3>Cómo se cultiva en la tradición tibetana</h3>
+<ul>
+<li><strong>Siete puntos de causa y efecto:</strong> reconocer a todos los seres como cercanos, recordar su bondad, desear retribuirla y desarrollar amor, compasión y una determinación personal de ayudar.</li>
+<li><strong>Igualarse e intercambiarse con los demás:</strong> reflexionar que todos deseamos ser felices, y entrenarse en poner el bienestar ajeno al nivel del propio.</li>
+<li><strong>Lojong, el entrenamiento de la mente:</strong> una colección de lemas breves, transmitida a partir de Atisha, para transformar las dificultades en camino. Incluye la práctica de <em>tonglen</em> (dar y recibir).</li>
+</ul>
+<h3>Una advertencia útil</h3>
+<p>Compasión no significa resignación ni dejar que otros nos dañen. Se puede ser firme, poner límites y proteger a otros sin odio. Y como todo en este espacio, no reemplaza a un maestro cualificado ni resuelve por sí sola las condiciones materiales de una vida.</p>
+</div></details></article>
         </div>
+        <div class="mt-8 rounded-2xl border border-clay-200 bg-clay-50/70 p-6 sm:p-8"><h2 class="serif text-xl font-semibold text-clay-800">Cómo leer estas explicaciones</h2><p class="mt-3 text-sm leading-7 text-clay-800">Los conceptos budistas tienen desarrollos distintos según los textos, las escuelas y los maestros. Las síntesis de esta página son introductorias: cuando acercamos una enseñanza a una situación cotidiana, estamos ofreciendo una interpretación para reflexionar, no afirmando que esa aplicación sea la única lectura tradicional posible.</p></div>
         <div class="mt-8 rounded-2xl border border-sage-200 bg-sage-50 p-6 sm:p-8"><h2 class="serif text-2xl font-semibold text-sage-800">Una aclaración importante</h2><p class="mt-3 text-sm leading-7 text-sage-800">Este sitio es un espacio de divulgación y reflexión personal, no reemplaza la guía de maestros cualificados ni el estudio de fuentes tradicionales. Cuando un concepto tenga distintas interpretaciones o traducciones, procuraremos señalarlo en lugar de presentarlo como una definición única.</p></div>
       </div>
     </section>
@@ -407,9 +519,9 @@
         <h1 class="serif mt-3 text-4xl font-semibold leading-tight text-ink sm:text-5xl">Prácticas sencillas de atención</h1>
         <p class="mt-6 text-lg leading-8 text-muted">No hace falta convertir cada momento en un ejercicio espiritual. Podemos empezar por pequeñas pausas que nos permitan ver con más claridad lo que está ocurriendo.</p>
         <div class="mt-9 space-y-4">
-          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">01 · Antes de responder</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La pausa de tres respiraciones</h2><p class="mt-3 text-sm leading-7 text-muted">Cuando algo te moleste, no intentes eliminar la emoción. Notá dónde se siente en el cuerpo. Hacé tres respiraciones naturales y preguntate: «¿Qué respuesta sería útil ahora, además de la que me sale automáticamente?».</p></article>
-          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">02 · Al final del día</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">Revisar sin castigarse</h2><p class="mt-3 text-sm leading-7 text-muted">Recordá una situación difícil. ¿Qué sentiste? ¿Qué necesitabas? ¿Qué hiciste? ¿Qué podrías probar la próxima vez? La revisión no es un juicio sobre tu valor: es una oportunidad de aprender.</p></article>
-          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">03 · En los vínculos</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">Escuchar antes de preparar la defensa</h2><p class="mt-3 text-sm leading-7 text-muted">En una conversación, observá cuándo dejás de escuchar y empezás a preparar mentalmente tu respuesta. No siempre tendrás que estar de acuerdo. A veces alcanza con comprender qué está diciendo la otra persona antes de contestar.</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">01 · Antes de responder</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">La pausa de tres respiraciones</h2><p class="mt-3 text-sm leading-7 text-muted">Cuando algo te moleste, en lugar de intentar eliminar la emoción, podés notar dónde se siente en el cuerpo, hacer tres respiraciones naturales y preguntarte: «¿Qué respuesta sería útil ahora, además de la que me sale automáticamente?».</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">02 · Al final del día</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">Revisar sin castigarse</h2><p class="mt-3 text-sm leading-7 text-muted">Podés recordar una situación difícil y preguntarte: ¿qué sentiste?, ¿qué necesitabas?, ¿qué hiciste? y ¿qué podrías probar la próxima vez? La revisión no es un juicio sobre tu valor: es una oportunidad de aprender.</p></article>
+          <article class="rounded-2xl border border-sage-200 bg-white p-6 sm:p-7"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">03 · En los vínculos</span><h2 class="serif mt-2 text-2xl font-semibold text-ink">Escuchar antes de preparar la defensa</h2><p class="mt-3 text-sm leading-7 text-muted">En una conversación, quizás puedas observar cuándo dejás de escuchar y empezás a preparar mentalmente tu respuesta. Comprender qué está diciendo la otra persona no significa estar de acuerdo; a veces, simplemente permite responder con algo más de claridad.</p></article>
         </div>
         <p class="mt-7 text-xs leading-6 text-muted">Estas propuestas son ejercicios introductorios de atención y reflexión, no instrucciones clínicas ni sustitutos de una práctica formal guiada.</p>
       </div>
@@ -420,9 +532,84 @@
       <div class="mx-auto max-w-5xl px-4 sm:px-6">
         <p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Seguir aprendiendo</p>
         <h1 class="serif mt-3 text-4xl font-semibold leading-tight text-ink sm:text-5xl">Lecturas, fuentes y videos</h1>
-        <p class="mt-6 max-w-3xl text-lg leading-8 text-muted">La divulgación necesita fuentes. Esta sección reúne materiales que ayudan a profundizar y permite seguir el contenido audiovisual del proyecto.</p>
-        <article class="mt-9 rounded-2xl border border-sage-200 bg-white p-7 shadow-soft sm:p-8"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Lectura recomendada · Shenpa</span><h2 class="serif mt-3 text-2xl font-semibold text-ink">Don’t Bite the Hook — Pema Chödrön</h2><p class="mt-3 text-sm leading-7 text-muted">En este texto, Pema Chödrön explica el shenpa como la experiencia de quedar «enganchados»: una sensación de tensión y urgencia que puede conducirnos a respuestas habituales. La autora reconoce la influencia de las enseñanzas de Dzigar Kongtrül Rinpoche en su presentación del concepto.</p><a class="mt-5 inline-flex rounded-lg bg-sage-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sage-800" href="https://tricycle.org/magazine/dont-bite-hook/" target="_blank" rel="noopener noreferrer">Leer en Tricycle ↗</a><p class="mt-4 text-xs text-muted">Pema Chödrön, Tricycle: The Buddhist Review, edición de verano de 2009.</p></article>
-        <article class="mt-5 rounded-2xl border border-sage-200 bg-sage-50 p-7 sm:p-8"><span class="text-xs font-bold uppercase tracking-widest text-sage-700">Canal del proyecto</span><h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Reflexión con Dharma en YouTube</h2><p class="mt-3 text-sm leading-7 text-sage-800">Videos y reflexiones para seguir explorando la mente, las emociones y las enseñanzas budistas en situaciones de la vida cotidiana.</p><a class="mt-5 inline-flex items-center gap-2 rounded-lg bg-sage-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sage-800" href="https://www.youtube.com/@ReflexionconDharma" target="_blank" rel="noopener noreferrer">Visitar el canal ↗</a></article>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-muted">Las reflexiones de este espacio dialogan con enseñanzas budistas, experiencias cotidianas y preguntas sobre la vida social. Las fuentes doctrinales ayudan a estudiar los conceptos; las fuentes sociales aportan datos sobre el mundo que habitamos. Ninguna referencia convierte automáticamente una reflexión personal en una enseñanza tradicional.</p>
+
+        <div class="mt-8 rounded-2xl border border-sage-200 bg-sage-50 p-6 sm:p-7">
+          <h2 class="serif text-2xl font-semibold text-sage-800">Cómo usamos las fuentes</h2>
+          <div class="mt-3 space-y-3 text-sm leading-7 text-sage-800">
+            <p><strong>Enseñanza tradicional:</strong> cuando presentamos un concepto budista, procuramos indicar la tradición, el maestro o el texto desde el que se explica.</p>
+            <p><strong>Interpretación y divulgación:</strong> una explicación contemporánea puede ayudar a acercar una enseñanza, pero no reemplaza el estudio de los textos ni representa necesariamente a todas las escuelas.</p>
+            <p><strong>Reflexión personal:</strong> los ejemplos y las conclusiones sobre situaciones cotidianas son elaboraciones del proyecto. No deben confundirse con citas del Buda ni con posiciones compartidas por todas las tradiciones.</p>
+            <p>Cuando una idea tenga distintas traducciones o interpretaciones, es preferible señalarlo antes que presentarla como una definición única.</p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Emociones y vínculos</p>
+          <article class="mt-3 rounded-2xl border border-sage-200 bg-white p-6 shadow-soft sm:p-7">
+            <h2 class="serif text-2xl font-semibold text-ink">Don’t Bite the Hook — Pema Chödrön</h2>
+            <p class="mt-3 text-sm leading-7 text-muted">Una explicación contemporánea del término tibetano <em>shenpa</em>. Chödrön lo presenta como la experiencia de quedar «enganchados» por una sensación, un pensamiento o un impulso. El artículo también reconoce la influencia de las enseñanzas de Dzigar Kongtrül Rinpoche.</p>
+            <a class="mt-4 inline-flex rounded-lg bg-sage-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sage-800" href="https://tricycle.org/magazine/dont-bite-hook/" target="_blank" rel="noopener noreferrer">Leer en Tricycle ↗</a>
+            <p class="mt-3 text-xs text-muted">Pema Chödrön, Tricycle: The Buddhist Review, verano de 2009. El artículo puede requerir suscripción.</p>
+          </article>
+          <article class="mt-4 rounded-2xl border border-sage-200 bg-white p-6 sm:p-7">
+            <h2 class="serif text-2xl font-semibold text-ink">Mudita: alegría por el bienestar ajeno</h2>
+            <p class="mt-3 text-sm leading-7 text-muted">Una introducción a la alegría empática, cualidad que en la tradición budista se cultiva junto con otras cualidades inconmensurables. Es una referencia útil para la reflexión sobre la envidia, aunque no pretende resolver las desigualdades materiales.</p>
+            <a class="mt-4 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://buddhistsocietiesofaustralia.org/topics/mudita/" target="_blank" rel="noopener noreferrer">Consultar la explicación ↗</a>
+          </article>
+        </div>
+
+        <div class="mt-10">
+          <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Enseñanzas y conceptos budistas</p>
+          <div class="mt-3 grid gap-4 md:grid-cols-2">
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Las cuatro verdades nobles</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Enseñanza central del budismo sobre el sufrimiento o insatisfacción, sus causas, su cesación y el camino que conduce a ella.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/es/estudios-avanzados/lam-rim/los-cinco-caminos-hacia-la-liberacion-y-la-iluminacion/el-dalai-lama-sobre-las-cuatro-verdades-nobles" target="_blank" rel="noopener noreferrer">Dalái Lama · Study Buddhism ↗</a>
+            </article>
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Karma y patrones de conducta</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Una explicación desde el budismo tibetano que ayuda a evitar una confusión habitual: karma no significa simplemente destino ni castigo predeterminado.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/es/puntos-basicos/que-es/que-es-el-karma" target="_blank" rel="noopener noreferrer">Study Buddhism · ¿Qué es el karma? ↗</a>
+            </article>
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Surgimiento dependiente</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Glosario introductorio sobre las distintas formas en que los fenómenos dependen de causas, condiciones y relaciones. El término tiene desarrollos filosóficos diversos.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/es/glossary/dependent-arising" target="_blank" rel="noopener noreferrer">Consultar el glosario ↗</a>
+            </article>
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Los doce eslabones del origen dependiente</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Una explicación desde los estudios del lamrim sobre cómo la falta de conciencia y otros factores condicionan la continuidad de samsara. Amplía la explicación de la Rueda de la Vida.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://studybuddhism.com/en/advanced-studies/lam-rim/samsara-nirvana/perpetuating-samsara-the-12-links-of-dependent-arising" target="_blank" rel="noopener noreferrer">Study Buddhism · Alexander Berzin ↗</a>
+            </article>
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Nāgārjuna y la escuela Madhyamaka</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Una entrada académica para profundizar en la filosofía Madhyamaka y en el análisis de la vacuidad. Es una lectura más especializada y no una introducción práctica.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://plato.stanford.edu/entries/madhyamaka/" target="_blank" rel="noopener noreferrer">Stanford Encyclopedia of Philosophy ↗</a>
+            </article>
+            <article class="rounded-2xl border border-sage-200 bg-white p-6">
+              <h2 class="serif text-xl font-semibold text-ink">Bodhicitta en Śāntideva</h2>
+              <p class="mt-3 text-sm leading-7 text-muted">Material de Ringu Tulku Rinpoche sobre el primer capítulo del <em>Bodhicaryāvatāra</em>, obra clásica del Mahayana que desarrolla la mente del despertar y el camino del bodhisattva.</p>
+              <a class="mt-3 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://bodhicharya.org/wp-content/uploads/2010/10/Ringu-Tulku-Bodhicharyavatara-Chapter-1.pdf" target="_blank" rel="noopener noreferrer">Leer el material en PDF ↗</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <p class="text-xs font-bold uppercase tracking-widest text-sage-700">Sociedad y condiciones de vida</p>
+          <article class="mt-3 rounded-2xl border border-sage-200 bg-white p-6 sm:p-7">
+            <h2 class="serif text-2xl font-semibold text-ink">World Income Inequality Database — UNU-WIDER</h2>
+            <p class="mt-3 text-sm leading-7 text-muted">Base de datos internacional sobre desigualdad de ingresos. No es una fuente budista: se incluye como recurso para consultar información social y económica vinculada con las reflexiones sobre las condiciones de partida y las oportunidades.</p>
+            <a class="mt-4 inline-flex font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4" href="https://www.wider.unu.edu/database/world-income-inequality-database-wiid" target="_blank" rel="noopener noreferrer">Consultar la base de datos ↗</a>
+          </article>
+        </div>
+
+        <article class="mt-10 rounded-2xl border border-sage-200 bg-sage-50 p-7 sm:p-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-sage-700">Canal del proyecto</span>
+          <h2 class="serif mt-3 text-2xl font-semibold text-sage-800">Reflexión con Dharma en YouTube</h2>
+          <p class="mt-3 text-sm leading-7 text-sage-800">Videos y reflexiones para seguir explorando la mente, las emociones y las enseñanzas budistas en situaciones de la vida cotidiana.</p>
+          <a class="mt-5 inline-flex items-center gap-2 rounded-lg bg-sage-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sage-800" href="https://www.youtube.com/@ReflexionconDharma" target="_blank" rel="noopener noreferrer">Visitar el canal ↗</a>
+        </article>
       </div>
     </section>
   </main>
@@ -440,6 +627,56 @@
       const articleIds = ['shenpa', 'envidia', 'habitos', 'nacimiento'];
       const menu = document.getElementById('mobile-menu');
       const menuButton = document.getElementById('menu-button');
+      const progress = document.getElementById('reading-progress');
+      const progressFill = document.getElementById('reading-progress-fill');
+      const viewMetadata = {
+        inicio: { title: 'Inicio', description: 'Reflexiones sobre emociones, hábitos, vínculos y dificultades cotidianas, en diálogo con el budismo tibetano. Sin promesas mágicas ni recetas universales.' },
+        reflexiones: { title: 'Reflexiones', description: 'Textos sobre emociones, frustraciones, vínculos, hábitos y preguntas de la vida cotidiana, desde una mirada realista y en diálogo con el Dharma.' },
+        aviso: { title: 'Antes de empezar', description: 'Una aclaración sobre los alcances y los límites de la reflexión, la práctica budista y las condiciones materiales de la vida.' },
+        budismo: { title: 'Budismo tibetano', description: 'Una introducción a conceptos del budismo tibetano, sus enseñanzas y prácticas, presentada con contexto y sin reducir la tradición a frases motivacionales.' },
+        practicas: { title: 'Prácticas', description: 'Ejercicios introductorios de atención y reflexión para observar emociones, pensamientos e impulsos en la vida cotidiana.' },
+        fuentes: { title: 'Lecturas y fuentes', description: 'Lecturas, referencias y materiales para profundizar en el budismo tibetano y las reflexiones de este espacio.' }
+      };
+      const articleDescriptions = {
+        shenpa: 'Una reflexión sobre shenpa, orgullo y reacciones automáticas: reconocer el impulso antes de responder, sin confundir calma con sometimiento.',
+        envidia: 'Una mirada a la envidia, la comparación y las desigualdades que influyen en las oportunidades y en la manera de evaluar nuestra propia vida.',
+        habitos: 'Sobre la distancia entre querer un resultado y sostener el proceso, sin confundir disciplina con castigo ni progreso con perfección.',
+        nacimiento: 'Una reflexión sobre las condiciones desiguales de partida, la aceptación y la posibilidad de actuar sin resignarse.'
+      };
+      const descriptionMeta = document.querySelector('meta[name="description"]');
+      const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+      const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
+      const ogUrlMeta = document.querySelector('meta[property="og:url"]');
+      const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
+      const twitterDescriptionMeta = document.querySelector('meta[name="twitter:description"]');
+
+      function updateReadingTimes() {
+        document.querySelectorAll('.article-detail').forEach(article => {
+          const body = article.querySelector('.article-body');
+          const label = article.querySelector('[data-reading-time]');
+          if (!body || !label) return;
+          const words = body.textContent.trim().split(/\s+/).filter(Boolean).length;
+          const minutes = Math.max(1, Math.ceil(words / 190));
+          label.textContent = `Tiempo de lectura: ${minutes} min aprox.`;
+        });
+      }
+
+      function updateReadingProgress() {
+        const article = document.querySelector('#view-reflexiones .article-detail:not(.hidden)');
+        if (!article) {
+          progress.hidden = true;
+          progress.setAttribute('aria-valuenow', '0');
+          progressFill.style.width = '0%';
+          return;
+        }
+        progress.hidden = false;
+        const start = article.getBoundingClientRect().top + window.scrollY;
+        const end = start + article.offsetHeight;
+        const range = Math.max(1, end - window.innerHeight - start);
+        const value = Math.max(0, Math.min(100, ((window.scrollY - start) / range) * 100));
+        progressFill.style.width = `${value.toFixed(1)}%`;
+        progress.setAttribute('aria-valuenow', String(Math.round(value)));
+      }
 
       function parseRoute() {
         const raw = (window.location.hash || '#inicio').slice(1);
@@ -453,9 +690,11 @@
           const element = document.getElementById(`view-${name}`);
           if (element) element.classList.toggle('hidden', name !== view);
         });
+        // Ocultar siempre los detalles antes de mostrar la ruta elegida.
+        // Así la barra de lectura no queda activa al volver a otra sección.
+        document.querySelectorAll('.article-detail').forEach(el => el.classList.add('hidden'));
         if (view === 'reflexiones') {
           document.getElementById('reflection-list').classList.toggle('hidden', Boolean(article));
-          document.querySelectorAll('.article-detail').forEach(el => el.classList.add('hidden'));
           if (article) {
             const detail = document.getElementById(`article-${article}`);
             if (detail) detail.classList.remove('hidden');
@@ -472,7 +711,32 @@
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Abrir menú');
         window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-        document.title = article ? `${document.getElementById(`article-${article}`)?.querySelector('h1')?.textContent || 'Reflexión'} | Reflexión & Dharma` : `${view === 'inicio' ? 'Inicio' : view === 'aviso' ? 'Antes de empezar' : view === 'fuentes' ? 'Lecturas y videos' : view.charAt(0).toUpperCase() + view.slice(1)} | Reflexión & Dharma`;
+        const activeArticle = document.querySelector('#view-reflexiones .article-detail:not(.hidden)');
+        const pageTitle = article && activeArticle
+          ? activeArticle.querySelector('h1')?.textContent || 'Reflexión'
+          : viewMetadata[view].title;
+        const pageDescription = article && articleDescriptions[article]
+          ? articleDescriptions[article]
+          : viewMetadata[view].description;
+        document.title = `${pageTitle} | Reflexión & Dharma`;
+        descriptionMeta?.setAttribute('content', pageDescription);
+        ogTitleMeta?.setAttribute('content', `${pageTitle} | Reflexión & Dharma`);
+        ogDescriptionMeta?.setAttribute('content', pageDescription);
+        ogUrlMeta?.setAttribute('content', window.location.href);
+        twitterTitleMeta?.setAttribute('content', `${pageTitle} | Reflexión & Dharma`);
+        twitterDescriptionMeta?.setAttribute('content', pageDescription);
+        const pageHeading = (activeArticle || document.getElementById(`view-${view}`))?.querySelector('h1');
+        if (pageHeading) {
+          pageHeading.setAttribute('tabindex', '-1');
+          requestAnimationFrame(() => pageHeading.focus({ preventScroll: true }));
+        }
+        if (activeArticle) {
+          progress.hidden = false;
+          progressFill.style.width = '0%';
+          progress.setAttribute('aria-valuenow', '0');
+        } else {
+          updateReadingProgress();
+        }
       }
 
       document.addEventListener('click', event => {
@@ -493,15 +757,27 @@
         menuButton.setAttribute('aria-label', opening ? 'Cerrar menú' : 'Abrir menú');
       });
 
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !menu.classList.contains('hidden')) {
+          menu.classList.add('hidden');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Abrir menú');
+          menuButton.focus();
+        }
+      });
+
       window.addEventListener('hashchange', renderRoute);
       window.addEventListener('popstate', renderRoute);
+      window.addEventListener('scroll', updateReadingProgress, { passive: true });
+      window.addEventListener('resize', updateReadingProgress);
+      updateReadingTimes();
       document.getElementById('year').textContent = new Date().getFullYear();
       renderRoute();
     })();
   </script>
 <!-- ===== CAPA MINIMALISTA · Una sola rueda del Dharma ===== -->
 <style>
-  #dharma-wheel { position:fixed; z-index:0; right:-34vmin; top:50%; width:128vmin; height:128vmin; margin-top:-64vmin; pointer-events:none; will-change:transform; animation:wheelin 2.4s ease-out both; }
+  #dharma-wheel { position:fixed; z-index:0; right:-34vmin; top:50%; width:128vmin; height:128vmin; margin-top:-64vmin; pointer-events:none; will-change:transform; animation:wheelin 2.4s ease-out; transition:opacity .7s ease; }
   #dharma-wheel svg { width:100%; height:100%; display:block; overflow:visible; }
   #dharma-wheel * { vector-effect:non-scaling-stroke; }
   main, footer { position:relative; z-index:1; }
@@ -513,7 +789,7 @@
 </style>
 <script>
 (function () {
-  var ink = '#26332d', red = '#8f2a20', i, s = '<svg viewBox="-200 -200 400 400" fill="none" aria-hidden="true">';
+  var ink = '#0f9b97', red = '#c8472f', i, s = '<svg viewBox="-200 -200 400 400" fill="none" aria-hidden="true">';
   s += '<g stroke="' + ink + '" stroke-width="1.1" stroke-opacity=".3">';
   s += '<circle r="196"/><circle r="189"/><circle r="152"/><circle r="46"/><circle r="31"/>';
   for (i = 0; i < 8; i++) {
@@ -538,6 +814,199 @@
   addEventListener('scroll', kick, { passive: true }); kick();
 })();
 </script>
+
+<style>
+  #view-budismo .grid { align-items:start; }
+  .deep { margin-top:1.1rem; border-top:1px solid rgba(113,134,107,.35); padding-top:.9rem; }
+  .deep summary { cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:.55rem; font-size:.85rem; font-weight:600; color:#0f7c7f; }
+  .deep summary::-webkit-details-marker { display:none; }
+  .deep summary::after { content:""; width:.5rem; height:.5rem; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .25s; }
+  .deep[open] summary::after { transform:rotate(-135deg) translate(-2px,0); }
+  .deep summary:hover { color:#0b5f63; }
+  .deep summary:focus-visible { outline:3px solid #5cc4be; outline-offset:4px; border-radius:.4rem; }
+  .deep .less, .deep[open] .more { display:none; } .deep[open] .less { display:inline; }
+  .deep-body { margin-top:.4rem; font-size:.875rem; line-height:1.85; color:#35605e; animation:deepin .4s ease both; }
+  .deep-body h3 { font:600 1.05rem/1.4 Lora,Georgia,serif; color:#0b5f63; margin:1.3rem 0 .35rem; }
+  .deep-body p { margin:.5rem 0; } .deep-body ul { list-style:disc; padding-left:1.15rem; margin:.5rem 0; } .deep-body li { margin:.4rem 0; }
+  .deep-body strong { color:#0b5f63; font-weight:650; }
+  @keyframes deepin { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion:reduce) { .deep-body { animation:none; } }
+</style>
+<style>
+  #view-budismo { position:relative; overflow:hidden; }
+  #view-budismo > div { position:relative; z-index:1; }
+  #view-budismo article.bg-white { background:rgba(255,255,255,.8); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); }
+  .peacock { position:absolute; z-index:0; left:-7%; top:90px; width:min(900px,115vw); pointer-events:none; }
+  .peacock svg { width:100%; display:block; overflow:visible; }
+  .peacock * { vector-effect:non-scaling-stroke; }
+  @keyframes fan { from { transform:rotate(0); } to { transform:rotate(var(--a)); } }
+  @media (max-width:640px) { .peacock { left:-45%; top:140px; width:150vw; } }
+  @media (prefers-reduced-motion:reduce) { .peacock g { animation:none !important; } }
+</style>
+<script>
+(function () {
+  var bud = document.getElementById('view-budismo'); if (!bud) return;
+  var T = '#0f9b97', C = '#c8472f', s = '<svg viewBox="0 0 400 400" fill="none" aria-hidden="true"><g stroke="' + T + '" stroke-width="1" stroke-opacity=".5">', side, j;
+  for (side = -1; side <= 1; side += 2) for (j = 0; j < 9; j++) {
+    var a = side * (14 + j * 10.5), L = 238 - (j % 2) * 36, ey = -(L - 28);
+    s += '<g style="--a:' + a + 'deg;transform-origin:200px 300px;transform:rotate(' + a + 'deg);animation:fan 1.9s cubic-bezier(.2,.8,.2,1) both;animation-delay:' + (j * .07).toFixed(2) + 's"><g transform="translate(200 300)">' +
+      '<path d="M0 -34C-13 -' + (L * .45) + ' -15 -' + (L * .78) + ' 0 -' + L + 'C15 -' + (L * .78) + ' 13 -' + (L * .45) + ' 0 -34Z"/><path d="M0 -34V' + (-(L - 40)) + '" stroke-opacity=".35"/>' +
+      '<ellipse cy="' + ey + '" rx="8" ry="12"/><ellipse cy="' + ey + '" rx="4" ry="6" fill="' + T + '" fill-opacity=".35"/><circle cy="' + ey + '" r="1.8" fill="' + C + '" stroke="none"/></g></g>';
+  }
+  s += '<path d="M191 306C184 276 189 248 200 232C211 248 216 276 209 306"/><ellipse cx="200" cy="328" rx="22" ry="32" fill="' + T + '" fill-opacity=".1"/><circle cx="200" cy="224" r="8"/>' +
+    '<path d="M200 216V202M196 217L190 205M204 217L210 205"/><path d="M197 229L200 238L203 229"/><path d="M192 358L190 378M208 358L210 378"/>' +
+    '<circle cx="200" cy="201" r="1.8" fill="' + C + '" stroke="none"/><circle cx="190" cy="204" r="1.6" fill="' + C + '" stroke="none"/><circle cx="210" cy="204" r="1.6" fill="' + C + '" stroke="none"/></g></svg>';
+  var d = document.createElement('div'); d.className = 'peacock'; d.setAttribute('aria-hidden', 'true'); d.innerHTML = s; bud.insertBefore(d, bud.firstChild);
+})();
+</script>
+<style>#dharma-wheel.off { opacity:0; }</style>
+<script>
+(function () {
+  var v = document.getElementById('view-budismo'), w = document.getElementById('dharma-wheel');
+  if (!v || !w) return;
+  function sync() { w.classList.toggle('off', !v.classList.contains('hidden')); }
+  new MutationObserver(sync).observe(v, { attributes: true, attributeFilter: ['class'] });
+  sync();
+})();
+</script>
+<style>
+  /* Budismo: menos aire arriba, el pavo real sube y las tarjetas lo cubren */
+  #view-budismo { padding-top:1.75rem !important; }
+  #view-budismo .mt-10 { margin-top:1.75rem; }
+  #view-budismo .peacock { top:-70px; }
+  @media (max-width:640px) { #view-budismo .peacock { top:-10px; } }
+</style>
+
+<!-- Pulido visual final: jerarquía editorial, lectura y adaptación móvil -->
+<style>
+  :root {
+    --editorial-paper: #f7f7f2;
+    --editorial-ink: #183431;
+    --editorial-muted: #5c716d;
+    --editorial-line: rgba(91, 125, 112, .22);
+  }
+  html { scroll-padding-top: 6rem; }
+  body { background: var(--editorial-paper); color: var(--editorial-ink); }
+  .site-header { background: rgba(249, 250, 245, .94); border-color: var(--editorial-line); }
+  .site-header > div { min-height: 76px; }
+  .nav-link { position: relative; transition: color .2s ease; }
+  .nav-link[aria-current="page"]::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 1px;
+    height: 2px; border-radius: 2px; background: #0f7c7f;
+  }
+  #view-inicio > div:first-child {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(214,240,237,.62), transparent 62%),
+      linear-gradient(180deg, rgba(250,250,245,.7), rgba(247,247,242,0));
+  }
+  #view-inicio h1 { max-width: 900px; letter-spacing: -.045em; }
+  #view-inicio > div:first-child > div.relative { padding-top: clamp(4.5rem, 9vw, 7.5rem); }
+  #view-inicio > div:first-child p.max-w-2xl { color: #526a65; }
+  #limites-reflexion-title { max-width: 760px; }
+  #view-inicio section[aria-labelledby="limites-reflexion-title"] > div {
+    background: linear-gradient(135deg, rgba(251,238,230,.92), rgba(250,246,237,.96));
+    border-color: rgba(180,71,47,.2);
+    box-shadow: 0 16px 45px rgba(85,65,45,.045);
+  }
+  #view-inicio section[aria-labelledby="destacada-title"] { padding-top: 1.1rem; }
+  #view-inicio section[aria-labelledby="destacada-title"] > a {
+    box-shadow: 0 18px 55px rgba(24,65,58,.09);
+  }
+  #view-inicio section[aria-labelledby="ejes-title"] { background: rgba(255,255,255,.55); }
+  #view-inicio section[aria-labelledby="ejes-title"] a,
+  #view-inicio section[aria-labelledby="ultimas-title"] a {
+    box-shadow: 0 8px 28px rgba(28,68,59,.035);
+  }
+  #view-inicio section[aria-labelledby="ejes-title"] a:hover,
+  #view-inicio section[aria-labelledby="ultimas-title"] a:hover {
+    box-shadow: 0 16px 34px rgba(28,68,59,.09);
+  }
+  .card-publication-date, .article-publication-date { font-variant-numeric: tabular-nums; }
+  .article-detail { padding-bottom: 4rem; }
+  .article-detail > header {
+    padding: 1.1rem 0 1.65rem;
+    border-bottom-color: var(--editorial-line);
+  }
+  .article-detail > header .eyebrow { line-height: 1.7; }
+  .article-detail > header h1 {
+    max-width: 52rem;
+    margin-top: .9rem;
+    font-size: clamp(2rem, 4.2vw, 3.35rem);
+    line-height: 1.16;
+    letter-spacing: -.035em;
+  }
+  .article-publication-date {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: 1.1rem;
+    color: #55756c;
+  }
+  .article-publication-date::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: #b4472f;
+  }
+  .article-reading-time {
+    display: flex; align-items: center; gap: .45rem;
+    padding: .75rem 0; border-bottom: 1px solid var(--editorial-line);
+    font-size: .76rem; color: #60746f;
+  }
+  .article-reading-time::before { content: "◷"; font-size: 1rem; color: #0f7c7f; }
+  .article-detail .article-body {
+    padding-top: .35rem;
+    color: #405e58;
+    font-size: clamp(1rem, 1.2vw, 1.075rem);
+    line-height: 1.95;
+  }
+  .article-detail .article-body h2 { scroll-margin-top: 6rem; }
+  .article-detail .article-body blockquote {
+    border-left-width: 3px;
+    background: linear-gradient(110deg, #e8f4ef, #f0f6f0);
+    padding: 1.35rem 1.5rem;
+  }
+  #view-reflexiones #reflection-list > div:first-of-type {
+    border-bottom-color: var(--editorial-line);
+  }
+  #reflection-list > div:last-child > a {
+    background: rgba(255,255,255,.82);
+    border-color: var(--editorial-line);
+    box-shadow: 0 8px 28px rgba(28,68,59,.035);
+  }
+  #reflection-list > div:last-child > a:first-child {
+    background: linear-gradient(115deg, #edf6f1, #f8faf5);
+    border-color: rgba(15,124,127,.3);
+  }
+  #reflection-list > div:last-child > a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(28,68,59,.08);
+  }
+  #view-aviso .article-body { color: #405e58; }
+  #view-aviso .article-body h2 { margin-top: 2.7rem; }
+  #view-aviso .article-body blockquote { margin-top: 2rem; }
+  #dharma-wheel { opacity: .32; }
+  #dharma-wheel.off { opacity: 0; }
+  .peacock { opacity: .82; }
+  footer { background: rgba(255,255,255,.72); border-color: var(--editorial-line); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  @media (max-width: 767px) {
+    .site-header > div { height: 68px; min-height: 68px; }
+    .site-header .serif { font-size: 1.02rem; }
+    .site-header .uppercase { font-size: 9px; }
+    .reading-progress { top: 68px; }
+    #view-inicio > div:first-child > div.relative { padding-top: 4.25rem; padding-bottom: 3.75rem; }
+    #view-inicio h1 { font-size: clamp(2.35rem, 10vw, 3.5rem); }
+    #view-inicio section[aria-labelledby="limites-reflexion-title"] { padding-bottom: 2.25rem; }
+    #view-inicio section[aria-labelledby="destacada-title"] { padding-bottom: 3.5rem; }
+    #view-inicio section[aria-labelledby="ultimas-title"] .grid { grid-template-columns: 1fr; }
+    #dharma-wheel { opacity: .2; }
+    .article-detail > header { margin-top: 1.5rem; }
+    .article-detail .article-body { font-size: 1rem; line-height: 1.85; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #dharma-wheel { animation: none !important; }
+    #view-inicio section a, #reflection-list a { transition: none !important; }
+  }
+</style>
 
 </body>
 </html>
