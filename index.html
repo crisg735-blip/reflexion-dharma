@@ -127,10 +127,8 @@
       <!-- ACLARACIÓN VISIBLE EN LA PORTADA -->
       <section class="mx-auto max-w-5xl px-4 pb-14 sm:px-6" aria-labelledby="limites-reflexion-title">
         <div class="rounded-3xl border border-clay-200 bg-clay-100/60 p-6 sm:p-9">
-          <p class="eyebrow text-sm font-extrabold uppercase tracking-widest text-center text-[#681B2B]">
-  Antes de seguir
-</p>
-        <h2 id="limites-reflexion-title" class="serif mt-3 text-2xl font-semibold leading-tight text-ink sm:text-3xl">Reflexionar puede ayudar, pero no resuelve todo.</h2>
+          <p class="eyebrow text-[10px] font-bold uppercase text-clay-700">Antes de seguir</p>
+          <h2 id="limites-reflexion-title" class="serif mt-3 text-2xl font-semibold leading-tight text-ink sm:text-3xl">Reflexionar puede ayudar, pero no resuelve todo.</h2>
           <div class="article-body mt-4 max-w-3xl space-y-3 text-sm leading-7 text-muted">
             <p>No todas las personas parten del mismo lugar ni cuentan con las mismas oportunidades. Para alguien que no tiene garantizados el alimento, el agua o un techo, la prioridad no es encontrar paz interior: es poder sobrevivir y cuidar a los suyos.</p>
             <p>Por eso, ninguna enseñanza, frase motivacional o reflexión debería presentarse como una solución mágica. La manera de pensar importa, pero también importan las condiciones materiales, los vínculos, la ayuda y las oportunidades reales.</p>
@@ -501,5 +499,45 @@
       renderRoute();
     })();
   </script>
+<!-- ===== CAPA MINIMALISTA · Una sola rueda del Dharma ===== -->
+<style>
+  #dharma-wheel { position:fixed; z-index:0; right:-34vmin; top:50%; width:128vmin; height:128vmin; margin-top:-64vmin; pointer-events:none; will-change:transform; animation:wheelin 2.4s ease-out both; }
+  #dharma-wheel svg { width:100%; height:100%; display:block; overflow:visible; }
+  #dharma-wheel * { vector-effect:non-scaling-stroke; }
+  main, footer { position:relative; z-index:1; }
+  /* Sin manchas de color: el papel queda limpio, la rueda es lo único */
+  #view-inicio > div.relative > .pointer-events-none { display:none; }
+  @keyframes wheelin { from { opacity:0; } to { opacity:1; } }
+  @media (max-width:640px) { #dharma-wheel { right:-64vmin; width:132vmin; height:132vmin; margin-top:-66vmin; } }
+  @media (prefers-reduced-motion:reduce) { #dharma-wheel { animation:none; } }
+</style>
+<script>
+(function () {
+  var ink = '#26332d', red = '#8f2a20', i, s = '<svg viewBox="-200 -200 400 400" fill="none" aria-hidden="true">';
+  s += '<g stroke="' + ink + '" stroke-width="1.1" stroke-opacity=".3">';
+  s += '<circle r="196"/><circle r="189"/><circle r="152"/><circle r="46"/><circle r="31"/>';
+  for (i = 0; i < 8; i++) {
+    s += '<g transform="rotate(' + i * 45 + ')"><line x1="0" y1="-46" x2="0" y2="-152"/><circle cy="-170" r="9"/><path d="M0 -61C-8 -88 -8 -112 0 -128C8 -112 8 -88 0 -61Z"/></g>';
+    s += '<ellipse cy="-39" rx="5" ry="8" transform="rotate(' + (i * 45 + 22.5) + ')"/>';
+  }
+  s += '</g><g fill="' + ink + '" fill-opacity=".34" stroke="none">';
+  for (i = 0; i < 96; i++) { var a = i * Math.PI / 48; s += '<circle cx="' + (Math.sin(a) * 170).toFixed(2) + '" cy="' + (-Math.cos(a) * 170).toFixed(2) + '" r=".9"/>'; }
+  s += '</g><circle r="9" fill="' + red + '" fill-opacity=".85"/></svg>';
+
+  var w = document.createElement('div'); w.id = 'dharma-wheel'; w.innerHTML = s; document.body.insertBefore(w, document.body.firstChild);
+
+  // La rueda gira con la lectura: cada desplazamiento la hace avanzar
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cur = 0, raf = 0;
+  function tick() {
+    var target = scrollY * .12; cur += (target - cur) * .08;
+    w.style.transform = 'rotate(' + cur.toFixed(2) + 'deg)';
+    raf = Math.abs(target - cur) > .01 ? requestAnimationFrame(tick) : 0;
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+  addEventListener('scroll', kick, { passive: true }); kick();
+})();
+</script>
+
 </body>
 </html>
