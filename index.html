@@ -103,6 +103,7 @@
       <nav class="hidden items-center gap-6 text-sm text-muted md:flex" aria-label="Navegación principal">
         <a class="nav-link focus-ring rounded py-2 hover:text-sage-700" href="#inicio" data-route>Inicio</a>
         <a class="nav-link focus-ring rounded py-2 hover:text-sage-700" href="#reflexiones" data-route>Reflexiones</a>
+        <a class="nav-link focus-ring rounded py-2 hover:text-sage-700 saved-nav-link" href="#guardadas" data-route>Guardadas <span class="saved-count" data-saved-count hidden></span></a>
         <a class="nav-link focus-ring rounded py-2 hover:text-sage-700" href="#aviso" data-route>Antes de empezar</a>
         <a class="nav-link focus-ring rounded py-2 hover:text-sage-700" href="#budismo" data-route>Budismo tibetano</a>
         <a class="nav-link focus-ring rounded py-2 hover:text-sage-700" href="#practicas" data-route>Prácticas</a>
@@ -116,6 +117,7 @@
     <nav id="mobile-menu" class="mobile-panel hidden border-t border-sage-100 bg-white px-4 py-3 md:hidden" aria-label="Navegación móvil">
       <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#inicio" data-route>Inicio</a>
       <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#reflexiones" data-route>Reflexiones</a>
+      <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#guardadas" data-route>Mis lecturas guardadas <span class="saved-count" data-saved-count hidden></span></a>
       <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#aviso" data-route>Antes de empezar</a>
       <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#budismo" data-route>Budismo tibetano</a>
       <a class="nav-link block rounded-lg px-3 py-2.5 text-sm text-ink hover:bg-sage-50" href="#practicas" data-route>Prácticas</a>
@@ -158,8 +160,11 @@
 
             <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8" aria-labelledby="destacada-title">
         <div class="mb-6 flex items-end justify-between gap-4">
-          <div><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Para empezar</p><h2 id="destacada-title" class="serif mt-2 text-2xl font-semibold text-ink sm:text-3xl">Una reflexión para este momento</h2></div>
-          <a href="#reflexiones" data-route class="hidden text-sm font-semibold text-sage-700 hover:underline sm:inline">Ver todas →</a>
+          <div><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Para empezar</p><h2 id="destacada-title" class="serif mt-2 text-2xl font-semibold text-ink sm:text-3xl">Una reflexión para este momento</h2><p class="mt-2 text-sm text-muted">La selección se renueva cada seis horas.</p></div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href="#reflexiones" data-route class="hidden text-sm font-semibold text-sage-700 hover:underline sm:inline">Ver todas →</a>
+            <button id="discover-reflection" type="button" class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-sage-200 bg-white px-3 py-2 text-xs font-semibold text-sage-800 shadow-sm transition hover:border-sage-400 hover:bg-sage-50 sm:px-4 sm:text-sm" aria-label="Descubrir una reflexión aleatoria">Descubrir otra reflexión <span aria-hidden="true">↗</span></button>
+          </div>
         </div>
         <a href="#reflexiones/perfeccionismo" data-route class="focus-ring group grid overflow-hidden rounded-3xl border border-sage-200 bg-white shadow-soft transition hover:-translate-y-1 md:grid-cols-[1.05fr_.95fr]">
           <div class="flex min-h-[280px] flex-col justify-center bg-sage-800 p-8 text-white sm:p-10">
@@ -513,7 +518,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Emociones y vínculos · Budismo tibetano</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No muerdas el anzuelo: cuando la reacción del otro despierta la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces la tensión empieza con algo que hace otra persona. Reconocerlo no nos obliga a cargar con su conducta; sí puede ayudarnos a decidir cómo responder y qué límites poner.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="shenpa" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="shenpa">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay personas que parecen tener facilidad para llevar cualquier conversación al conflicto. Un comentario irónico, un tono agresivo, una provocación o una respuesta desmedida pueden convertir una situación menor en una discusión. Y cuando eso ocurre, es fácil pensar que el problema está exclusivamente del otro lado.</p>
@@ -567,7 +583,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Comparación y emociones</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">El espejo de la envidia: cuando la vida del otro te recuerda la tuya</h1><p class="mt-5 text-lg leading-8 text-muted">A veces no nos duele que al otro le vaya bien. Nos duele que tenga algo que nosotros queremos y todavía no conseguimos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="envidia" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="envidia">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay una forma de envidia que cuesta admitir porque no siempre nace del odio ni del deseo de quitarle algo a alguien. A veces, simplemente, te duele que otro tenga lo que vos querés y todavía no conseguiste.</p>
@@ -614,7 +641,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Hábitos y disciplina</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La tiranía de los hábitos: querer resultados sin tolerar el proceso</h1><p class="mt-5 text-lg leading-8 text-muted">Querer un resultado no significa que ya hayamos aceptado el proceso cotidiano que suele acompañarlo.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-04">Publicado el miércoles 4 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="habitos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="habitos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Queremos un cuerpo más marcado, pero nos cansamos de entrenar. Queremos aprobar las materias, pero nos cuesta sentarnos a estudiar cuando estamos agotados. Queremos ganar más dinero, pero no siempre tenemos la paciencia de desarrollar las habilidades que podrían acercarnos a ese objetivo. Queremos disciplina, aunque muchas veces esperamos sentir ganas antes de actuar.</p>
@@ -663,7 +701,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Desigualdad y aceptación</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La lotería del nacimiento: aceptar las condiciones sin resignarse</h1><p class="mt-5 text-lg leading-8 text-muted">Nadie elige las condiciones desde las que empieza. Reconocerlo no elimina nuestra capacidad de actuar, pero cambia la manera de entender el camino.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-06">Publicado el viernes 6 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="nacimiento" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="nacimiento">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>No elegimos nuestra familia, el lugar en el que nacemos, los recursos económicos que tendremos durante la infancia ni las oportunidades que estarán disponibles cuando comencemos a tomar nuestras propias decisiones.</p>
@@ -709,7 +758,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Comunicación y ego · Budismo tibetano</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Escuchamos o simplemente esperamos nuestro turno para hablar?</h1><p class="mt-5 text-lg leading-8 text-muted">Sobre la necesidad de señalar el error ajeno, la competencia por la atención y la dificultad de estar verdaderamente presentes en una conversación.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-10">Publicado el martes 10 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="escucha" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="escucha">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Seguramente te pasó alguna vez. Estás en un almuerzo de trabajo, en una cena con amigos o tomando un café, y alguien empieza a contar una anécdota. Si te detenés a observar lo que sucede alrededor mientras esa persona habla, tal vez notás tres comportamientos bastante habituales.</p>
@@ -759,7 +819,18 @@
           <a href="#reflexiones" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al archivo</a>
           <header class="mt-7 border-b border-sage-200 pb-7"><p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Autoexigencia y presencia · Budismo tibetano</p><h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La trampa de querer hacerlo perfecto: cuando la autoexigencia nos bloquea</h1><p class="mt-5 text-lg leading-8 text-muted">Sobre la paradoja de buscar la respuesta impecable, el peso del «debería» y cómo la obsesión por el resultado nos retraba en lugar de impulsarnos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-10">Publicado el martes 10 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="perfeccionismo" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="perfeccionismo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay situaciones en las que terminamos frustrados con nosotros mismos, no porque no sepamos hacer algo, sino porque sentimos que no fuimos capaces de demostrarlo.</p>
@@ -837,7 +908,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Recordar que vamos a morir</h1>
             <p class="mt-5 text-lg leading-8 text-muted">La muerte no es solamente un acontecimiento lejano. Recordar que nuestra vida tiene un límite puede ayudarnos a reconocer qué merece nuestra atención hoy.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-20">Publicado el 20 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="recordar-que-vamos-a-morir" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="recordar-que-vamos-a-morir">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Postergás una llamada porque pensás que ya habrá otro momento. Dejás para más adelante una visita, una disculpa o una conversación que sabés que importa. No necesariamente lo hacés por indiferencia: a veces estás cansado, ocupado o simplemente suponés que las personas y las oportunidades van a seguir ahí. La vida cotidiana tiene una manera particular de convencernos de que siempre habrá un después.</p>
@@ -880,7 +962,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Comprender nuestra interpretación</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Un comentario, un gesto o una demora pueden acompañarnos durante horas. A veces sufrimos por lo ocurrido y también por la historia que construimos alrededor de eso.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-23">Publicado el 23 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="comprender-nuestra-interpretacion" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="comprender-nuestra-interpretacion">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Un compañero te responde de manera seca. No dice nada especialmente grave, pero el tono te queda dando vueltas. Durante el resto del día repasás la conversación: quizás quiso desautorizarte, tal vez está molesto con vos o seguramente piensa que no sabés hacer tu trabajo. Cuanto más la recordás, más evidente parece esa interpretación. Sin embargo, hay algo que conviene revisar: ¿qué parte de lo que pensás ocurrió realmente y qué parte completó tu mente?</p>
@@ -924,7 +1017,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Aprender a soltar</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Soltar no siempre significa irse ni dejar de querer. A veces significa dejar de exigir que una persona, una etapa o un resultado sean exactamente como esperamos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-26">Publicado el 26 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="aprender-a-soltar" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="aprender-a-soltar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Seguís revisando una conversación que terminó hace meses. Pensás qué tendrías que haber dicho, cómo podrías haber evitado el desenlace o qué explicación conseguiría que todo volviera a tener sentido. Quizás la relación terminó, quizás la otra persona eligió alejarse o tal vez seguís en un vínculo que cambió. Una parte tuya sabe que las cosas ya no son iguales; otra continúa negociando con lo que ocurrió.</p>
@@ -968,7 +1072,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No podemos regresar al pasado</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Podemos recordar, reparar y aprender, pero no volver a vivir una escena. La diferencia entre asumir el pasado y seguir castigándonos por él cambia nuestra relación con el presente.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-11-29">Publicado el 29 de noviembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="no-podemos-regresar-al-pasado" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="no-podemos-regresar-al-pasado">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hay errores que vuelven a nuestra mente cuando menos los esperamos. Una decisión económica, una oportunidad que dejamos pasar, una palabra dicha en un momento de enojo o una relación que no supimos cuidar. Pensamos cómo habría sido todo si hubiéramos elegido de otra manera. A veces no buscamos una solución; volvemos una y otra vez a la escena como si repetirla pudiera abrir una puerta hacia una versión diferente de nuestra vida.</p>
@@ -1011,7 +1126,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Reconocer nuestro valor y poner límites</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Cuidar un vínculo no exige aceptar cualquier trato. Poner límites puede ser una expresión de respeto hacia los demás y también hacia nuestras propias condiciones.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-02">Publicado el 2 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="reconocer-nuestro-valor-y-poner-limites" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="reconocer-nuestro-valor-y-poner-limites">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Un amigo hace un comentario que te incomoda. Lo dejás pasar porque no querés generar una discusión. Después vuelve a hacerlo, quizá delante de otras personas, y otra vez sonreís para no parecer exagerado. Con el tiempo empezás a evitar ciertos encuentros o acumulás bronca. Desde afuera parece que no pasó nada; por dentro, el vínculo se fue llenando de cosas que nunca dijiste.</p>
@@ -1055,7 +1181,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Encontrar aprendizaje en las dificultades</h1>
             <p class="mt-5 text-lg leading-8 text-muted">No todas las dificultades llegan para enseñarnos algo. Pero incluso cuando no elegimos lo que ocurre, podemos investigar qué respuesta es posible construir.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-05">Publicado el 5 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="encontrar-aprendizaje-en-las-dificultades" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="encontrar-aprendizaje-en-las-dificultades">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Cuando atravesamos una etapa difícil, es común que alguien nos diga que todo pasa por algo o que de esa experiencia vamos a salir más fuertes. La intención quizás sea acompañarnos, pero esas frases pueden resultar injustas cuando el problema todavía duele, cuando hay pérdidas que no se pueden revertir o cuando la persona no cuenta con los recursos necesarios para resolverlo.</p>
@@ -1098,7 +1235,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Atreverse a no saber</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Admitir que no sabemos puede incomodar al ego, pero también abre el espacio necesario para aprender, preguntar y revisar nuestras certezas.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-08">Publicado el 8 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="atreverse-a-no-saber" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="atreverse-a-no-saber">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>En una reunión alguien hace una pregunta y no conocés la respuesta. Podés decirlo, pero algo te detiene. Quizás temés parecer poco preparado, perder autoridad o dar la impresión de que no merecés el lugar que ocupás. Entonces improvisás, hablás en términos generales o desviás la conversación. Tal vez nadie note la maniobra; vos sí sabés que no respondiste con honestidad.</p>
@@ -1141,7 +1289,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Aceptar la incertidumbre</h1>
             <p class="mt-5 text-lg leading-8 text-muted">No todo puede resolverse antes de empezar. Aprender a convivir con lo que todavía no sabemos evita que la necesidad de certeza dirija cada decisión.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-11">Publicado el 11 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="aceptar-la-incertidumbre" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="aceptar-la-incertidumbre">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Esperás una respuesta sobre un trabajo, un resultado médico, una decisión familiar o una relación que parece haber quedado suspendida. Mientras no llega, revisás el teléfono, repasás conversaciones y tratás de anticipar cada desenlace. Una parte tuya sabe que todavía no hay información nueva; otra insiste en pensar como si la repetición pudiera producirla.</p>
@@ -1185,7 +1344,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Actuar en lugar de reaccionar</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Entre lo que sucede y lo que hacemos puede existir un pequeño margen. Aprender a reconocerlo permite responder con intención en vez de repetir el primer impulso.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-14">Publicado el 14 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="actuar-en-lugar-de-reaccionar" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="actuar-en-lugar-de-reaccionar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Leés un mensaje que te molesta y empezás a escribir una respuesta. Mientras tecleás, imaginás lo que la otra persona va a contestar y agregás una frase más filosa. En pocos segundos, una conversación que todavía podía aclararse se convierte en una disputa. Después quizá te arrepientas, pero en el momento sentías que responder de inmediato era la única opción.</p>
@@ -1227,7 +1397,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No postergar la experiencia de vivir</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Esperar el momento perfecto puede hacer que la vida quede siempre para después. No se trata de abandonar responsabilidades, sino de no convertirlas en una postergación indefinida.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-17">Publicado el 17 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="no-postergar-la-experiencia-de-vivir" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="no-postergar-la-experiencia-de-vivir">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Te decís que vas a empezar cuando tengas más tiempo. Cuando termines de pagar una deuda, cuando consigas un trabajo mejor, cuando baje el ritmo o cuando estés más tranquilo. La intención parece razonable: primero resolver lo urgente y después dedicarte a eso que te importa. El problema es que siempre aparece otra urgencia, y el comienzo se desplaza un poco más adelante.</p>
@@ -1270,7 +1451,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Comprender las consecuencias de nuestros actos</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Nuestras decisiones no ocurren en el vacío. Comprender sus consecuencias permite asumir responsabilidad sin caer en la idea simplista de que controlamos todo lo que sucede.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-20">Publicado el 20 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="comprender-las-consecuencias-de-nuestros-actos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="comprender-las-consecuencias-de-nuestros-actos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Hacés un comentario en tono de broma y alguien se queda callado. Como no hubo una discusión, seguís con tu día. Un tiempo después te enterás de que esa persona se sintió humillada. Tal vez no era tu intención, pero el efecto existió. La situación abre una pregunta incómoda: ¿hasta dónde somos responsables por las consecuencias de lo que hacemos cuando no eran las que buscábamos?</p>
@@ -1316,7 +1508,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Reconocer nuestros condicionamientos</h1>
             <p class="mt-5 text-lg leading-8 text-muted">No empezamos desde cero: aprendemos maneras de pensar, defendernos y relacionarnos. Reconocer esos condicionamientos permite revisar lo heredado sin negar nuestra historia.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-23">Publicado el 23 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="reconocer-nuestros-condicionamientos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="reconocer-nuestros-condicionamientos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>En tu casa se resolvían los conflictos levantando la voz. En otra familia, nadie hablaba de lo que dolía. Quizás aprendiste que pedir ayuda era una señal de debilidad, que el éxito dependía exclusivamente del esfuerzo o que para conservar un vínculo había que evitar cualquier desacuerdo. Años después, esas reglas pueden seguir funcionando en vos, incluso cuando ya no estás de acuerdo con ellas.</p>
@@ -1359,7 +1562,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Cultivar lo que queremos conservar</h1>
             <p class="mt-5 text-lg leading-8 text-muted">La atención y los hábitos alimentan aquello que termina ocupando nuestra vida. No alcanza con desear una cualidad: también necesitamos crear condiciones para practicarla.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-26">Publicado el 26 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="cultivar-lo-que-queremos-conservar" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="cultivar-lo-que-queremos-conservar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Decís que valorás la amistad, pero pasan semanas sin responder un mensaje. Querés cuidar tu salud, aunque el descanso queda siempre para después. Te importa aprender, pero cada espacio libre termina absorbido por distracciones. No necesariamente falta deseo. A veces la distancia entre lo que valoramos y lo que hacemos se construye con pequeñas decisiones repetidas.</p>
@@ -1404,7 +1618,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Transformar la identidad que repetimos</h1>
             <p class="mt-5 text-lg leading-8 text-muted">A veces convertimos nuestros errores, costumbres y etiquetas en una definición permanente. El cambio empieza cuando dejamos de tratar nuestra identidad como algo cerrado.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2026-12-29">Publicado el 29 de diciembre de 2026</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="transformar-la-identidad-que-repetimos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="transformar-la-identidad-que-repetimos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>«Yo soy así». La frase puede aparecer después de una discusión, al justificar una demora o cuando alguien señala una conducta que repetimos. A veces la usamos con humor; otras, como una explicación definitiva. Decimos que somos desconfiados, desordenados, impulsivos o incapaces de sostener algo. La etiqueta parece describirnos, pero también puede convertirse en una autorización para no revisar lo que hacemos.</p>
@@ -1446,7 +1671,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">El poder de la palabra y el silencio</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Una palabra puede reparar, acercar o herir; el silencio también puede cuidar o convertirse en una forma de evasión. La diferencia está en la intención y en el momento.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-01">Publicado el 1 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="el-poder-de-la-palabra-y-el-silencio" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="el-poder-de-la-palabra-y-el-silencio">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>En una discusión, encontrás la frase exacta para dejar al otro sin respuesta. La decís y, por unos segundos, sentís que recuperaste el control. Después aparece el silencio, pero no necesariamente la comprensión. La conversación terminó porque alguien quedó herido, no porque el problema se haya resuelto. En otras ocasiones ocurre lo contrario: no decís nada para evitar un conflicto y ese silencio deja crecer una distancia que nadie se anima a nombrar.</p>
@@ -1489,7 +1725,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Comprender que todo tiene una última vez</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Muchas experiencias terminan sin que sepamos que están ocurriendo por última vez. Reconocerlo puede cambiar la atención con la que atravesamos lo cotidiano.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-04">Publicado el 4 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="comprender-que-todo-tiene-una-ultima-vez" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="comprender-que-todo-tiene-una-ultima-vez">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Un día compartís un café con alguien, recorrés una calle conocida o escuchás una voz que forma parte de tu rutina. No hay nada extraordinario en ese momento. Tiempo después descubrís que fue la última vez: la persona se mudó, el lugar cerró, el vínculo cambió o las circunstancias hicieron imposible repetirlo. Mientras ocurría, no había una señal que anunciara su final.</p>
@@ -1533,7 +1780,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Ser uno mismo cuando nadie observa</h1>
             <p class="mt-5 text-lg leading-8 text-muted">La integridad no se demuestra únicamente frente a los demás. También se expresa en las decisiones pequeñas que tomamos cuando nadie va a reconocernos ni a felicitarnos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-07">Publicado el 7 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="ser-uno-mismo-cuando-nadie-observa" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="ser-uno-mismo-cuando-nadie-observa">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Encontrás un error que probablemente nadie va a notar. Podés corregirlo o dejarlo pasar. Un compañero se ausenta y aparece la oportunidad de atribuirte una parte de su trabajo. En una situación cotidiana, podrías cumplir un acuerdo aunque nadie esté controlando. Son decisiones pequeñas, sin público ni reconocimiento, pero revelan algo sobre la relación entre nuestros valores y nuestras acciones.</p>
@@ -1578,7 +1836,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Distinguir intuición de miedo</h1>
             <p class="mt-5 text-lg leading-8 text-muted">A veces una señal interna nos ayuda a reconocer un riesgo; otras veces el miedo anticipa un peligro que todavía no existe. Aprender a diferenciarlos requiere atención y evidencia.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-10">Publicado el 10 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="distinguir-intuicion-de-miedo" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="distinguir-intuicion-de-miedo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Conocés a alguien y sentís desconfianza sin poder explicar demasiado por qué. O recibís una propuesta y algo dentro tuyo te dice que no avances. También puede ocurrir que quieras tomar una decisión importante, pero una cadena de pensamientos te anuncia todo lo que podría salir mal. ¿Es intuición, miedo o una mezcla de ambos?</p>
@@ -1624,7 +1893,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Aceptar las pérdidas y los cambios</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Aceptar una pérdida no significa que deje de doler ni que tengamos que estar de acuerdo con ella. Significa empezar a relacionarnos con una realidad que ya cambió.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-13">Publicado el 13 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="aceptar-las-perdidas-y-los-cambios" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="aceptar-las-perdidas-y-los-cambios">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Una relación termina, una persona se muda, un trabajo que daba estabilidad desaparece o una etapa de la vida deja de estar disponible. Quizás la pérdida era esperada, quizás llegó de golpe. En ambos casos, una parte de nosotros sigue buscando la forma de recuperar lo conocido. Revisamos recuerdos, imaginamos qué podríamos haber hecho distinto o esperamos que algo revierta lo que ya cambió.</p>
@@ -1669,7 +1949,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Investigar el origen del sufrimiento</h1>
             <p class="mt-5 text-lg leading-8 text-muted">El budismo no propone negar el dolor, sino investigar cómo surge y qué lo alimenta. Esa mirada permite distinguir el sufrimiento inevitable de aquello que podemos dejar de añadir.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-16">Publicado el 16 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="investigar-el-origen-del-sufrimiento" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="investigar-el-origen-del-sufrimiento">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Algo no sale como esperabas y aparece la frustración. Además de la decepción inicial, empezás a pensar que siempre te ocurre lo mismo, que no servís para eso o que los demás tienen una vida más sencilla. El acontecimiento ya era difícil, pero la mente agrega comparaciones, conclusiones y anticipaciones. El malestar se amplía hasta ocupar mucho más espacio que el hecho que lo desencadenó.</p>
@@ -1711,7 +2002,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Actuar desde el cuidado y no desde el resentimiento</h1>
             <p class="mt-5 text-lg leading-8 text-muted">El resentimiento puede nacer de una herida legítima, pero cuando dirige cada respuesta termina prolongando el daño. Cuidar no significa justificar ni olvidar.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-19">Publicado el 19 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="actuar-desde-el-cuidado-y-no-desde-el-resentimiento" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="actuar-desde-el-cuidado-y-no-desde-el-resentimiento">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien te falló y no hubo una reparación. Desde entonces, cada vez que aparece una oportunidad, sentís ganas de recordarle lo que hizo. Quizás el reclamo sea legítimo: hubo una falta de respeto, un compromiso incumplido o una injusticia. Sin embargo, notás que el episodio sigue ocupando un lugar enorme en tu vida. Incluso cuando no hablás con esa persona, la conversación continúa dentro tuyo.</p>
@@ -1754,7 +2056,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Reconocer el deterioro gradual de los hábitos</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Los hábitos rara vez se desarman de un día para otro. Muchas veces se deterioran mediante pequeñas concesiones que dejamos de observar hasta que el patrón ya está instalado.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-22">Publicado el 22 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="reconocer-el-deterioro-gradual-de-los-habitos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="reconocer-el-deterioro-gradual-de-los-habitos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Al principio dejás de entrenar una semana porque estás cansado. Después aparece una obligación, luego una salida y más tarde la sensación de que ya perdiste el ritmo. Algo parecido sucede con el descanso, el estudio, la alimentación o el tiempo que dedicás a una relación. No hubo una decisión consciente de abandonar: simplemente, cada día resultó más fácil postergarlo.</p>
@@ -1801,7 +2114,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Cambiar nuestra relación con el pasado</h1>
             <p class="mt-5 text-lg leading-8 text-muted">No podemos cambiar lo que ocurrió, pero sí podemos revisar el lugar que le damos en nuestra historia. Recordar con honestidad no exige vivir atados a una versión de ayer.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-25">Publicado el 25 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="cambiar-nuestra-relacion-con-el-pasado" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="cambiar-nuestra-relacion-con-el-pasado">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Contás una anécdota de hace años y volvés a describirte desde el mismo error. Recordás una relación que terminó y te preguntás si todavía sos la persona que fue capaz de actuar de esa manera. O utilizás una experiencia dolorosa para explicar por qué no confiás, no intentás o no te permitís volver a empezar.</p>
@@ -1845,7 +2169,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Dejar de esconder lo que somos</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Mostrar quiénes somos requiere discernimiento: no toda persona merece conocer nuestra intimidad, pero vivir permanentemente ocultándonos también puede alejarnos de nosotros mismos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-28">Publicado el 28 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="dejar-de-esconder-lo-que-somos" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="dejar-de-esconder-lo-que-somos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>En una conversación, evitás decir lo que realmente pensás para no quedar mal. En el trabajo ocultás una duda porque temés parecer incompetente. Con ciertas personas modificás tus gustos, tus opiniones o tus formas de hablar para encajar. Al principio parece una adaptación inofensiva, pero con el tiempo puede aparecer una pregunta: ¿cuánto de lo que muestro es una elección y cuánto es miedo a no ser aceptado?</p>
@@ -1889,7 +2224,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Aprender a estar en silencio</h1>
             <p class="mt-5 text-lg leading-8 text-muted">El silencio puede ser una pausa fértil o una forma de escapar. Aprender a estar en él implica observar lo que aparece sin correr inmediatamente a llenarlo.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-01-31">Publicado el 31 de enero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="aprender-a-estar-en-silencio" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="aprender-a-estar-en-silencio">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Estás solo y, casi sin darte cuenta, buscás algo para escuchar. Ponés música, abrís una aplicación o revisás mensajes. En una conversación, cuando aparece una pausa, sentís la necesidad de decir algo. El silencio parece un espacio incómodo que hay que completar. A veces no es que tengamos algo importante para agregar: simplemente nos cuesta permanecer unos segundos sin estímulos o sin controlar lo que está pasando.</p>
@@ -1933,7 +2279,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La venganza nunca termina donde empieza</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Devolver el daño puede parecer una forma de recuperar justicia, pero muchas veces prolonga el conflicto y nos involucra en aquello que decíamos rechazar.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-03">Publicado el 3 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="la-venganza-nunca-termina-donde-empieza" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="la-venganza-nunca-termina-donde-empieza">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien te humilló y fantaseás con encontrar la oportunidad de hacerle pasar por lo mismo. Imaginás qué decir, cómo exponerlo o qué situación podría dejarlo en evidencia. Por un momento, esa fantasía parece equilibrar las cosas: si la otra persona sintiera lo que vos sentiste, quizá comprendería. Pero cuanto más la alimentás, más espacio ocupa en tu vida una persona y un episodio que ya te habían hecho daño.</p>
@@ -1977,7 +2334,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La segunda flecha: sufrir por estar sufriendo</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Al dolor inicial podemos añadirle vergüenza, culpa o enojo por sentirlo. La enseñanza de la segunda flecha invita a reconocer esa carga adicional sin negar la primera.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-06">Publicado el 6 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="la-segunda-flecha-sufrir-por-estar-sufriendo" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="la-segunda-flecha-sufrir-por-estar-sufriendo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Tenés un día difícil y, además de sentirte mal, te reprochás estar así. Pensás que ya deberías haber superado el problema, que no tenés motivos suficientes para estar triste o que otras personas atraviesan situaciones peores. Entonces el dolor inicial se mezcla con vergüenza por sentirlo. Ya no solo estás triste: también te enojás con vos por estar triste.</p>
@@ -2021,7 +2389,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Somos buenos o malos? La trampa de las etiquetas</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Una acción puede ser dañina sin convertir a una persona en una esencia malvada. Comprender esta diferencia no elimina la responsabilidad: permite pensarla con más precisión.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-09">Publicado el 9 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="somos-buenos-o-malos-la-trampa-de-las-etiquetas" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="somos-buenos-o-malos-la-trampa-de-las-etiquetas">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien hace algo cruel y rápidamente pensamos que es una mala persona. Cuando somos nosotros quienes actuamos mal, buscamos explicaciones: estábamos cansados, nos provocaron o no tuvimos otra opción. Aplicamos una etiqueta definitiva a los demás y una explicación contextual a nuestras propias conductas. Esa diferencia revela cuánto necesitamos proteger la imagen que tenemos de nosotros mismos.</p>
@@ -2067,7 +2446,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Aceptar la injusticia no significa tolerarla</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Aceptar que una injusticia está ocurriendo no es aprobarla. Es dejar de negar los hechos para poder responder con claridad, firmeza y responsabilidad.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-12">Publicado el 12 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="aceptar-la-injusticia-no-significa-tolerarla" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="aceptar-la-injusticia-no-significa-tolerarla">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Te enterás de que alguien recibió un trato desigual. Puede ser en el trabajo, en una institución, en la familia o en la sociedad. La situación te indigna y, al mismo tiempo, aparece una frase conocida: «hay que aceptar las cosas como son». Pero ¿qué significa aceptar cuando lo que está ocurriendo es injusto? ¿Implica resignarse o reconocer la realidad para poder actuar?</p>
@@ -2110,7 +2500,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La última gota nunca es solamente una gota</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Una reacción intensa puede parecer desproporcionada frente a un hecho pequeño. A veces, sin embargo, ese hecho llega sobre una acumulación que todavía no habíamos reconocido.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-15">Publicado el 15 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="la-ultima-gota-nunca-es-solamente-una-gota" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="la-ultima-gota-nunca-es-solamente-una-gota">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien deja una taza fuera de lugar y reaccionás con una furia que sorprende incluso a quienes te rodean. La discusión parece girar alrededor de una taza, pero sabés que no se trata solamente de eso. Venías acumulando cansancio, tareas sin resolver, pequeñas decepciones y la sensación de que nadie registra lo que hacés. La última gota no explica por sí sola el desborde.</p>
@@ -2156,7 +2557,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Por qué me molesta tanto que otros no hagan bien su trabajo?</h1>
             <p class="mt-5 text-lg leading-8 text-muted">La falta de compromiso ajena puede tener consecuencias reales, pero también puede activar expectativas, orgullo y una sensación de injusticia. Comprender ambas dimensiones permite responder mejor.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-18">Publicado el 18 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="por-que-me-molesta-tanto-que-otros-no-hagan-bien-su-trabajo" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="por-que-me-molesta-tanto-que-otros-no-hagan-bien-su-trabajo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Estás trabajando y alguien entrega algo incompleto. Sabés que vas a tener que corregirlo, explicar lo que faltó o asumir una demora que no te corresponde. La molestia parece lógica: el trabajo de otra persona afecta el tuyo. Sin embargo, notás que el enojo crece mucho más allá del problema puntual. Te cuesta dejar de pensar en la falta de responsabilidad, en lo injusto que es y en por qué pareciera que siempre tenés que ocuparte vos.</p>
@@ -2197,7 +2609,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">Cuando el respeto ajeno determina nuestro valor</h1>
             <p class="mt-5 text-lg leading-8 text-muted">El reconocimiento importa porque vivimos con otros, pero cuando nuestra dignidad depende por completo de cómo nos tratan o nos miran, quedamos a merced de una aprobación que nunca controlamos.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-21">Publicado el 21 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="cuando-el-respeto-ajeno-determina-nuestro-valor" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="cuando-el-respeto-ajeno-determina-nuestro-valor">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien te habla con desprecio y, más allá de la bronca, aparece una pregunta silenciosa: ¿qué tiene esa persona para tratarme así? Un comentario, una falta de reconocimiento o una exclusión pueden quedarse dando vueltas mucho tiempo. No duele solamente lo que ocurrió; también parece decir algo sobre el lugar que ocupamos para los demás.</p>
@@ -2243,7 +2666,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Por qué buscamos peleas que podríamos evitar?</h1>
             <p class="mt-5 text-lg leading-8 text-muted">No todos los conflictos son necesarios, pero tampoco todos deben evitarse. Aprender a distinguir una conversación importante de una pelea impulsada por el ego protege nuestros vínculos y nuestros límites.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-24">Publicado el 24 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="por-que-buscamos-peleas-que-podriamos-evitar" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="por-que-buscamos-peleas-que-podriamos-evitar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien hace un comentario con el que no estás de acuerdo y sentís la necesidad de responder. La conversación podría seguir de largo, pero elegís señalar el error, corregir una palabra o demostrar que tu interpretación es más precisa. En poco tiempo, el desacuerdo se convierte en una discusión que ya no parece tratar sobre el tema inicial.</p>
@@ -2287,7 +2721,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La necesidad de ganar también nos hace perder</h1>
             <p class="mt-5 text-lg leading-8 text-muted">A veces ganamos una discusión y perdemos confianza, cercanía o la posibilidad de comprender. La victoria inmediata no siempre coincide con lo que realmente queríamos cuidar.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-02-27">Publicado el 27 de febrero de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="la-necesidad-de-ganar-tambien-nos-hace-perder" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="la-necesidad-de-ganar-tambien-nos-hace-perder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>En una discusión conseguís demostrar que tenías razón. La otra persona deja de responder o admite que tu argumento era correcto. Sin embargo, la conversación termina con distancia y malestar. Ganaste el punto, pero algo del vínculo quedó dañado. Quizás eso no importe en todas las situaciones; en otras, descubrís que defendiste una posición a costa de aquello que más te interesaba.</p>
@@ -2334,7 +2779,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Cuándo es suficiente?</h1>
             <p class="mt-5 text-lg leading-8 text-muted">La búsqueda de mejorar puede abrir posibilidades, pero también convertirse en una carrera sin final. Reconocer qué significa suficiente exige distinguir necesidades, deseos y comparaciones.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-03-02">Publicado el 2 de marzo de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="cuando-es-suficiente" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="cuando-es-suficiente">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Terminás una meta y enseguida aparece otra. Conseguís un aumento, pero empezás a compararte con alguien que gana más. Comprás algo que deseabas y al poco tiempo querés una versión mejor. Terminás un proyecto y en lugar de disfrutarlo, te concentrás en lo que todavía falta. La satisfacción dura poco porque la medida se mueve apenas llegás.</p>
@@ -2379,7 +2835,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">La falta ajena no justifica la propia</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Que alguien incumpla, mienta o actúe con crueldad no nos obliga a responder del mismo modo. La responsabilidad por nuestras acciones no desaparece frente a la falta ajena.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-03-05">Publicado el 5 de marzo de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="la-falta-ajena-no-justifica-la-propia" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="la-falta-ajena-no-justifica-la-propia">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Un compañero no cumple un acuerdo y pensás que no tenés por qué seguir cumpliendo el tuyo. Alguien te habla mal y sentís que ahora tenés derecho a responder con la misma agresividad. Una persona se aprovecha de tu buena voluntad y decidís que, de ahora en más, vas a actuar igual. La falta ajena parece ofrecer una autorización: si el otro lo hizo primero, entonces nuestra respuesta queda justificada.</p>
@@ -2423,7 +2890,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">¿Cuánto valés cuando no tenés nada para mostrar?</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Cuando el éxito, la productividad y los logros se convierten en la medida del valor personal, los momentos de pausa pueden sentirse como una pérdida de identidad.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-03-08">Publicado el 8 de marzo de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="cuanto-vales-cuando-no-tenes-nada-para-mostrar" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="cuanto-vales-cuando-no-tenes-nada-para-mostrar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Alguien te pregunta cómo estás y terminás contando qué hiciste, cuánto avanzaste o qué proyecto estás por alcanzar. Cuando no hay novedades, aparece una incomodidad difícil de explicar. Sentís que no tenés demasiado para mostrar. Quizás estás atravesando una etapa de búsqueda laboral, estudiando sin resultados visibles, recuperándote de un problema o simplemente viviendo una temporada menos productiva.</p>
@@ -2470,7 +2948,18 @@
             <h1 class="serif mt-3 text-3xl font-semibold leading-tight text-ink sm:text-5xl">No alcanza con no hacer el mal</h1>
             <p class="mt-5 text-lg leading-8 text-muted">Evitar dañar es fundamental, pero una vida ética también necesita una intención activa de cuidar, ayudar y reducir el sufrimiento cuando tenemos la posibilidad.</p>
             <p class="article-publication-date mt-3 text-xs font-medium tracking-wide text-sage-600"><time datetime="2027-03-15">Publicado el 15 de marzo de 2027</time></p>
-          </header>
+          
+            <div class="article-actions" data-article-actions>
+              <button type="button" class="article-action-button save-action" data-save-reflection="no-alcanza-con-no-hacer-el-mal" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.6L6 21V4.75Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span data-save-label>Guardar para leer después</span>
+              </button>
+              <button type="button" class="article-action-button share-action" data-share-reflection="no-alcanza-con-no-hacer-el-mal">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6.25A1.75 1.75 0 0 0 6.75 21h10.5A1.75 1.75 0 0 0 19 19.25V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Compartir reflexión</span>
+              </button>
+              <span class="article-action-feedback" data-action-feedback role="status" aria-live="polite"></span>
+            </div></header>
           <p class="article-reading-time" data-reading-time>Tiempo de lectura aproximado</p>
           <div class="article-body mt-8">
             <p>Podés pasar una jornada sin insultar a nadie, sin mentir y sin perjudicar deliberadamente a otra persona. Sin embargo, quizá también hayas ignorado a alguien que necesitaba ayuda, evitado intervenir ante una situación injusta o retenido una colaboración que podías ofrecer sin un costo importante. No hiciste daño de manera directa, pero tampoco te preguntaste qué bien podías aportar.</p>
@@ -2512,6 +3001,24 @@
     </section>
 
     <!-- BUDISMO TIBETANO -->
+
+    <section id="view-guardadas" class="view hidden py-12 sm:py-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <a href="#inicio" data-route class="focus-ring text-sm font-semibold text-sage-700 hover:underline">← Volver al inicio</a>
+        <div class="mt-7 border-b border-sage-200 pb-8">
+          <p class="eyebrow text-[10px] font-bold uppercase text-sage-700">Tu biblioteca personal</p>
+          <h1 class="serif mt-3 text-4xl font-semibold leading-tight text-ink sm:text-5xl">Tus lecturas guardadas</h1>
+          <p class="mt-5 max-w-3xl text-base leading-8 text-muted">Un lugar para volver a las reflexiones que quieras releer. Tus selecciones se guardan en este navegador y en este dispositivo.</p>
+        </div>
+        <div id="saved-reflections-list" class="mt-8 space-y-4" aria-live="polite"></div>
+        <div id="saved-reflections-empty" class="mt-8 rounded-2xl border border-dashed border-sage-300 bg-white/70 px-6 py-10 text-center">
+          <p class="serif text-xl font-semibold text-ink">Todavía no guardaste ninguna reflexión</p>
+          <p class="mt-2 text-sm leading-7 text-muted">Cuando estés leyendo un artículo, tocá «Guardar para leer después» y aparecerá acá.</p>
+          <a href="#reflexiones" data-route class="mt-5 inline-flex items-center justify-center rounded-xl bg-sage-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sage-800">Explorar reflexiones →</a>
+        </div>
+        <p class="mt-6 text-xs leading-6 text-muted">Nota: las lecturas guardadas permanecen en este navegador. No se sincronizan automáticamente entre dispositivos ni navegadores.</p>
+      </div>
+    </section>
 
     <section id="view-budismo" class="view hidden py-14 sm:py-18">
       <div class="mx-auto max-w-5xl px-4 sm:px-6">
@@ -2696,8 +3203,196 @@
 
   <script>
     (() => {
-      const views = ['inicio', 'reflexiones', 'aviso', 'budismo', 'practicas', 'fuentes'];
+      const views = ['inicio', 'reflexiones', 'guardadas', 'aviso', 'budismo', 'practicas', 'fuentes'];
       const articleIds = ['shenpa', 'envidia', 'habitos', 'nacimiento', 'escucha', 'perfeccionismo', 'recordar-que-vamos-a-morir', 'comprender-nuestra-interpretacion', 'aprender-a-soltar', 'no-podemos-regresar-al-pasado', 'reconocer-nuestro-valor-y-poner-limites', 'encontrar-aprendizaje-en-las-dificultades', 'atreverse-a-no-saber', 'aceptar-la-incertidumbre', 'actuar-en-lugar-de-reaccionar', 'no-postergar-la-experiencia-de-vivir', 'comprender-las-consecuencias-de-nuestros-actos', 'reconocer-nuestros-condicionamientos', 'cultivar-lo-que-queremos-conservar', 'transformar-la-identidad-que-repetimos', 'el-poder-de-la-palabra-y-el-silencio', 'comprender-que-todo-tiene-una-ultima-vez', 'ser-uno-mismo-cuando-nadie-observa', 'distinguir-intuicion-de-miedo', 'aceptar-las-perdidas-y-los-cambios', 'investigar-el-origen-del-sufrimiento', 'actuar-desde-el-cuidado-y-no-desde-el-resentimiento', 'reconocer-el-deterioro-gradual-de-los-habitos', 'cambiar-nuestra-relacion-con-el-pasado', 'dejar-de-esconder-lo-que-somos', 'aprender-a-estar-en-silencio', 'la-venganza-nunca-termina-donde-empieza', 'la-segunda-flecha-sufrir-por-estar-sufriendo', 'somos-buenos-o-malos-la-trampa-de-las-etiquetas', 'aceptar-la-injusticia-no-significa-tolerarla', 'la-ultima-gota-nunca-es-solamente-una-gota', 'por-que-me-molesta-tanto-que-otros-no-hagan-bien-su-trabajo', 'cuando-el-respeto-ajeno-determina-nuestro-valor', 'por-que-buscamos-peleas-que-podriamos-evitar', 'la-necesidad-de-ganar-tambien-nos-hace-perder', 'cuando-es-suficiente', 'la-falta-ajena-no-justifica-la-propia', 'cuanto-vales-cuando-no-tenes-nada-para-mostrar', 'no-alcanza-con-no-hacer-el-mal'];
+      // Publicación programada: las fechas se interpretan a medianoche de Argentina.
+      const publicationTimeZone = 'America/Argentina/Buenos_Aires';
+      const archiveContainer = document.querySelector('#reflection-list .mt-8.space-y-4');
+      const reflectionCards = Array.from(archiveContainer?.querySelectorAll(':scope > a') || []);
+      const reflections = reflectionCards.map(card => {
+        const href = card.getAttribute('href') || '';
+        const id = href.split('/')[1] || '';
+        const dateNode = card.querySelector('time[datetime]');
+        const detail = id ? document.getElementById(`article-${id}`) : null;
+        const titleNode = card.querySelector('h2');
+        const descriptionNode = card.querySelector('p:not(.card-publication-date)');
+        const categoryNode = card.querySelector(':scope > span');
+        const quoteNode = detail?.querySelector('.article-body blockquote');
+        return {
+          id,
+          card,
+          publishDate: dateNode?.getAttribute('datetime') || '',
+          dateLabel: dateNode?.textContent.trim() || '',
+          title: titleNode?.textContent.trim() || detail?.querySelector('h1')?.textContent.trim() || 'Reflexión',
+          description: descriptionNode?.textContent.trim() || '',
+          category: categoryNode?.textContent.trim() || 'Vida cotidiana y Dharma',
+          quote: quoteNode?.textContent.trim() || descriptionNode?.textContent.trim() || '',
+          detail
+        };
+      }).filter(reflection => reflection.id && reflection.publishDate);
+      const reflectionsById = new Map(reflections.map(reflection => [reflection.id, reflection]));
+
+      function argentinaDateParts(date = new Date()) {
+        const parts = new Intl.DateTimeFormat('en-CA', {
+          timeZone: publicationTimeZone,
+          year: 'numeric', month: '2-digit', day: '2-digit'
+        }).formatToParts(date);
+        return Object.fromEntries(parts.filter(part => part.type !== 'literal').map(part => [part.type, part.value]));
+      }
+
+      function argentinaDateKey(date = new Date()) {
+        const parts = argentinaDateParts(date);
+        return `${parts.year}-${parts.month}-${parts.day}`;
+      }
+
+      function argentinaHour(date = new Date()) {
+        const part = new Intl.DateTimeFormat('en-GB', {
+          timeZone: publicationTimeZone,
+          hour: '2-digit',
+          hourCycle: 'h23'
+        }).formatToParts(date).find(item => item.type === 'hour');
+        return Number(part?.value || 0);
+      }
+
+      function isReflectionPublished(reflection) {
+        return Boolean(reflection?.publishDate && reflection.publishDate <= argentinaDateKey());
+      }
+
+      function getPublishedReflections() {
+        return reflections.filter(isReflectionPublished);
+      }
+
+      function seededShuffle(items, seedText) {
+        let seed = 2166136261;
+        for (let i = 0; i < seedText.length; i++) {
+          seed ^= seedText.charCodeAt(i);
+          seed = Math.imul(seed, 16777619);
+        }
+        function random() {
+          seed += 0x6D2B79F5;
+          let value = seed;
+          value = Math.imul(value ^ (value >>> 15), value | 1);
+          value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+          return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+        }
+        const result = items.slice();
+        for (let i = result.length - 1; i > 0; i--) {
+          const j = Math.floor(random() * (i + 1));
+          [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+      }
+
+      const featuredSection = document.querySelector('#view-inicio section[aria-labelledby="destacada-title"]');
+      const featuredLink = featuredSection?.querySelector(':scope > a');
+      const recommendationSection = document.querySelector('#view-inicio section[aria-labelledby="ultimas-title"]');
+      const recommendationGrid = recommendationSection?.querySelector('.grid');
+      const recommendationTemplate = recommendationGrid?.querySelector('a')?.cloneNode(true);
+      const discoverButton = document.getElementById('discover-reflection');
+      let currentFeaturedId = null;
+      let lastDiscoveredId = null;
+      let lastPublishedSignature = '';
+      let lastTimeSlot = '';
+
+      function updateDateLabel(target, reflection) {
+        if (!target) return;
+        const sourceTime = reflection.card.querySelector('time[datetime]');
+        if (sourceTime) {
+          target.setAttribute('datetime', sourceTime.getAttribute('datetime'));
+          target.textContent = sourceTime.textContent.trim();
+        }
+      }
+
+      function renderFeaturedReflection(reflection) {
+        if (!featuredLink || !reflection) return;
+        featuredLink.setAttribute('href', `#reflexiones/${reflection.id}`);
+        const leftPanel = featuredLink.children[0];
+        const rightPanel = featuredLink.children[1];
+        const category = leftPanel?.querySelector('.eyebrow');
+        const title = leftPanel?.querySelector('h3');
+        const description = leftPanel?.querySelector('p:not(.card-publication-date)');
+        const date = leftPanel?.querySelector('.card-publication-date time');
+        const quote = rightPanel?.querySelector('p.serif');
+        const quoteLabel = rightPanel?.querySelector('p:last-child');
+        if (category) category.textContent = `Reflexión destacada · ${reflection.category}`;
+        if (title) title.textContent = reflection.title;
+        if (description) description.textContent = reflection.description;
+        updateDateLabel(date, reflection);
+        if (quote) quote.textContent = reflection.quote;
+        if (quoteLabel) quoteLabel.textContent = 'Una idea para llevar';
+        currentFeaturedId = reflection.id;
+      }
+
+      function renderRecommendationCard(reflection) {
+        if (!recommendationTemplate) return null;
+        const card = recommendationTemplate.cloneNode(true);
+        card.setAttribute('href', `#reflexiones/${reflection.id}`);
+        const category = card.querySelector(':scope > span');
+        const title = card.querySelector('h3');
+        const description = card.querySelector('p:not(.card-publication-date)');
+        const date = card.querySelector('.card-publication-date time');
+        if (category) category.textContent = reflection.category;
+        if (title) title.textContent = reflection.title;
+        if (description) description.textContent = reflection.description;
+        updateDateLabel(date, reflection);
+        return card;
+      }
+
+      function renderHomeSelection(selection) {
+        if (!selection.length) {
+          if (featuredSection) featuredSection.classList.add('hidden');
+          if (recommendationSection) recommendationSection.classList.add('hidden');
+          if (discoverButton) discoverButton.disabled = true;
+          currentFeaturedId = null;
+          return;
+        }
+        if (featuredSection) featuredSection.classList.remove('hidden');
+        if (recommendationSection) recommendationSection.classList.remove('hidden');
+        renderFeaturedReflection(selection[0]);
+        if (recommendationGrid) {
+          recommendationGrid.replaceChildren();
+          selection.slice(1, 4).forEach(reflection => {
+            const card = renderRecommendationCard(reflection);
+            if (card) recommendationGrid.appendChild(card);
+          });
+        }
+        if (discoverButton) discoverButton.disabled = getPublishedReflections().length < 2;
+      }
+
+      function currentTimeSlotKey() {
+        const hourBlock = Math.floor(argentinaHour() / 6);
+        return `${argentinaDateKey()}-${hourBlock}`;
+      }
+
+      function syncPublicationAndHome() {
+        const available = getPublishedReflections();
+        reflections.forEach(reflection => {
+          const published = isReflectionPublished(reflection);
+          reflection.card.hidden = !published;
+          reflection.card.classList.toggle('hidden', !published);
+          reflection.card.setAttribute('aria-hidden', String(!published));
+        });
+        const signature = available.map(reflection => reflection.id).join('|');
+        const timeSlot = currentTimeSlotKey();
+        if (signature !== lastPublishedSignature || timeSlot !== lastTimeSlot) {
+          const scheduledSelection = seededShuffle(available, timeSlot).slice(0, 4);
+          renderHomeSelection(scheduledSelection);
+          lastPublishedSignature = signature;
+          lastTimeSlot = timeSlot;
+        }
+      }
+
+      discoverButton?.addEventListener('click', () => {
+        const available = getPublishedReflections();
+        let choices = available.filter(reflection => reflection.id !== currentFeaturedId && reflection.id !== lastDiscoveredId);
+        if (!choices.length) choices = available.filter(reflection => reflection.id !== currentFeaturedId);
+        if (!choices.length) choices = available;
+        if (!choices.length) return;
+        const chosen = choices[Math.floor(Math.random() * choices.length)];
+        lastDiscoveredId = chosen.id;
+        window.location.hash = `#reflexiones/${chosen.id}`;
+      });
+
       const menu = document.getElementById('mobile-menu');
       const menuButton = document.getElementById('menu-button');
       const progress = document.getElementById('reading-progress');
@@ -2705,6 +3400,7 @@
       const viewMetadata = {
         inicio: { title: 'Inicio', description: 'Reflexiones sobre emociones, hábitos, vínculos y dificultades cotidianas, en diálogo con el budismo tibetano. Sin promesas mágicas ni recetas universales.' },
         reflexiones: { title: 'Reflexiones', description: 'Textos sobre emociones, frustraciones, vínculos, hábitos y preguntas de la vida cotidiana, desde una mirada realista y en diálogo con el Dharma.' },
+        guardadas: { title: 'Tus lecturas guardadas', description: 'Tu biblioteca personal de reflexiones guardadas en este navegador.' },
         aviso: { title: 'Antes de empezar', description: 'Una aclaración sobre los alcances y los límites de la reflexión, la práctica budista y las condiciones materiales de la vida.' },
         budismo: { title: 'Budismo tibetano', description: 'Una introducción a conceptos del budismo tibetano, sus enseñanzas y prácticas, presentada con contexto y sin reducir la tradición a frases motivacionales.' },
         practicas: { title: 'Prácticas', description: 'Ejercicios introductorios de atención y reflexión para observar emociones, pensamientos e impulsos en la vida cotidiana.' },
@@ -2794,7 +3490,13 @@
       function parseRoute() {
         const raw = (window.location.hash || '#inicio').slice(1);
         const [view, article] = raw.split('/');
-        return { view: views.includes(view) ? view : 'inicio', article: articleIds.includes(article) ? article : null };
+        const requestedArticle = articleIds.includes(article) ? article : null;
+        const reflection = requestedArticle ? reflectionsById.get(requestedArticle) : null;
+        if (requestedArticle && (!reflection || !isReflectionPublished(reflection))) {
+          window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#reflexiones`);
+          return { view: 'reflexiones', article: null };
+        }
+        return { view: views.includes(view) ? view : 'inicio', article: requestedArticle };
       }
 
       function renderRoute() {
@@ -2885,8 +3587,211 @@
       window.addEventListener('resize', updateReadingProgress);
       updateReadingTimes();
       document.getElementById('year').textContent = new Date().getFullYear();
+      syncPublicationAndHome();
+      window.setInterval(syncPublicationAndHome, 60 * 1000);
       renderRoute();
     })();
+  </script>
+  <script>
+  (() => {
+    'use strict';
+
+    const STORAGE_KEY = 'reflexionDharmaSavedReadingsV1';
+    const list = document.getElementById('saved-reflections-list');
+    const emptyState = document.getElementById('saved-reflections-empty');
+    const savedButtons = () => Array.from(document.querySelectorAll('[data-save-reflection]'));
+    const feedbackFor = (button) => button.closest('[data-article-actions]')?.querySelector('[data-action-feedback]');
+    let savedIds = new Set();
+
+    function readSavedIds() {
+      try {
+        const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        return new Set(Array.isArray(value) ? value.filter(id =>
+          typeof id === 'string' && document.getElementById(`article-${id}`)
+        ) : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function persistSavedIds() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(savedIds)));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function articleIsPublished(id) {
+      const article = document.getElementById(`article-${id}`);
+      const time = article?.querySelector('time[datetime]');
+      if (!time) return false;
+
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Argentina/Buenos_Aires',
+        year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(new Date());
+      const today = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
+      const todayKey = `${today.year}-${today.month}-${today.day}`;
+      return time.getAttribute('datetime') <= todayKey;
+    }
+
+    function getArticleCard(id) {
+      return Array.from(document.querySelectorAll('#reflection-list a[data-route]'))
+        .find(card => (card.getAttribute('href') || '') === `#reflexiones/${id}`);
+    }
+
+    function updateSaveButtons() {
+      savedButtons().forEach(button => {
+        const isSaved = savedIds.has(button.dataset.saveReflection);
+        button.setAttribute('aria-pressed', String(isSaved));
+        button.classList.toggle('is-saved', isSaved);
+        const label = button.querySelector('[data-save-label]');
+        if (label) label.textContent = isSaved ? 'Guardada · Quitar de guardadas' : 'Guardar para leer después';
+        button.setAttribute('aria-label', isSaved
+          ? 'Quitar esta reflexión de tus lecturas guardadas'
+          : 'Guardar esta reflexión para leer después');
+      });
+      document.querySelectorAll('[data-saved-count]').forEach(node => {
+        const count = savedIds.size;
+        node.textContent = count ? String(count) : '';
+        node.hidden = !count;
+      });
+    }
+
+    function makeRemoveButton(id, title) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'saved-remove-button';
+      button.textContent = 'Quitar';
+      button.setAttribute('aria-label', `Quitar «${title}» de tus lecturas guardadas`);
+      button.addEventListener('click', () => {
+        savedIds.delete(id);
+        persistSavedIds();
+        updateSaveButtons();
+        renderSavedPage();
+      });
+      return button;
+    }
+
+    function renderSavedPage() {
+      if (!list || !emptyState) return;
+      const entries = Array.from(savedIds)
+        .filter(id => articleIsPublished(id))
+        .map(id => ({ id, card: getArticleCard(id) }))
+        .filter(item => item.card)
+        .sort((a, b) => {
+          const da = a.card.querySelector('time[datetime]')?.dateTime || '';
+          const db = b.card.querySelector('time[datetime]')?.dateTime || '';
+          return db.localeCompare(da);
+        });
+
+      list.replaceChildren();
+      entries.forEach(({ id, card: sourceCard }) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'saved-reading-row';
+        const card = sourceCard.cloneNode(true);
+        card.hidden = false;
+        card.removeAttribute('hidden');
+        card.classList.remove('hidden');
+        card.setAttribute('aria-hidden', 'false');
+        wrapper.append(card, makeRemoveButton(id, sourceCard.querySelector('h2')?.textContent.trim() || 'esta reflexión'));
+        list.appendChild(wrapper);
+      });
+      emptyState.hidden = entries.length > 0;
+    }
+
+    function toggleSaved(button) {
+      const id = button.dataset.saveReflection;
+      if (!id || !articleIsPublished(id)) return;
+      const feedback = feedbackFor(button);
+      if (savedIds.has(id)) {
+        savedIds.delete(id);
+        if (feedback) feedback.textContent = 'Se quitó de tus lecturas guardadas.';
+      } else {
+        savedIds.add(id);
+        if (feedback) feedback.textContent = 'Guardada en este dispositivo.';
+      }
+      const persisted = persistSavedIds();
+      if (!persisted && feedback) feedback.textContent += ' No se pudo conservar al cerrar el navegador.';
+      updateSaveButtons();
+      renderSavedPage();
+    }
+
+    function fallbackCopy(text) {
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch (_) {}
+      field.remove();
+      return copied;
+    }
+
+    async function shareArticle(button) {
+      const id = button.dataset.shareReflection;
+      const article = document.getElementById(`article-${id}`);
+      const title = article?.querySelector('h1')?.textContent.trim() || 'Reflexión';
+      const description = article?.querySelector('header > p.text-lg')?.textContent.trim() || 'Una reflexión de Reflexión & Dharma.';
+      const url = new URL(window.location.pathname, window.location.origin);
+      url.hash = `reflexiones/${id}`;
+      const shareData = { title: `${title} | Reflexión & Dharma`, text: description, url: url.href };
+      const feedback = button.closest('[data-article-actions]')?.querySelector('[data-action-feedback]');
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          if (feedback) feedback.textContent = 'Gracias por compartir esta reflexión.';
+        } catch (error) {
+          if (error?.name !== 'AbortError' && feedback) feedback.textContent = 'No se pudo abrir el menú para compartir.';
+        }
+        return;
+      }
+
+      let copied = false;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(url.href);
+          copied = true;
+        } else {
+          copied = fallbackCopy(url.href);
+        }
+      } catch (_) {
+        copied = fallbackCopy(url.href);
+      }
+      if (feedback) feedback.textContent = copied
+        ? 'Enlace copiado. Ya podés compartirlo.'
+        : 'No se pudo copiar automáticamente. Copiá el enlace desde la barra del navegador.';
+    }
+
+    document.addEventListener('click', event => {
+      const saveButton = event.target.closest('[data-save-reflection]');
+      if (saveButton) {
+        toggleSaved(saveButton);
+        return;
+      }
+      const shareButton = event.target.closest('[data-share-reflection]');
+      if (shareButton) shareArticle(shareButton);
+    });
+
+    window.addEventListener('hashchange', renderSavedPage);
+    window.addEventListener('storage', event => {
+      if (event.key === STORAGE_KEY) {
+        savedIds = readSavedIds();
+        updateSaveButtons();
+        renderSavedPage();
+      }
+    });
+
+    savedIds = readSavedIds();
+    updateSaveButtons();
+    renderSavedPage();
+  })();
   </script>
 <!-- ===== CAPA MINIMALISTA · Una sola rueda del Dharma ===== -->
 <style>
@@ -3121,5 +4026,41 @@
   }
 </style>
 
+<style>
+  .article-actions {
+    display:flex; flex-wrap:wrap; align-items:center; gap:.65rem;
+    margin-top:1.25rem;
+  }
+  .article-action-button {
+    display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+    min-height:42px; padding:.62rem .95rem; border:1px solid #c6ded7;
+    border-radius:999px; background:rgba(255,255,255,.88); color:#0b5f63;
+    font-size:.78rem; font-weight:650; transition:background .18s ease,border-color .18s ease,transform .18s ease;
+  }
+  .article-action-button svg { width:17px; height:17px; flex:none; }
+  .article-action-button:hover { background:#eaf7f5; border-color:#7ccfc8; transform:translateY(-1px); }
+  .article-action-button.is-saved { background:#0f7c7f; border-color:#0f7c7f; color:#fff; }
+  .article-action-button.is-saved svg path { fill:rgba(255,255,255,.2); }
+  .article-action-button:focus-visible,.saved-remove-button:focus-visible { outline:3px solid #5cc4be; outline-offset:3px; }
+  .article-action-feedback { min-height:1.2rem; color:#587573; font-size:.75rem; }
+  .saved-count {
+    display:inline-flex; align-items:center; justify-content:center; min-width:1.2rem;
+    height:1.2rem; margin-left:.15rem; padding:0 .3rem; border-radius:999px;
+    background:#d6f0ed; color:#0b5f63; font-size:.68rem; font-weight:700;
+  }
+  .saved-reading-row { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:stretch; gap:.65rem; }
+  .saved-reading-row > a { min-width:0; }
+  .saved-remove-button {
+    align-self:center; padding:.65rem .85rem; border:1px solid #c6ded7;
+    border-radius:999px; background:#fff; color:#587573; font-size:.75rem; font-weight:600;
+  }
+  .saved-remove-button:hover { background:#fbeee6; border-color:#f0d3c2; color:#8f3928; }
+  @media(max-width:640px) {
+    .article-action-button { font-size:.74rem; padding:.58rem .8rem; }
+    .saved-reading-row { grid-template-columns:1fr; }
+    .saved-remove-button { justify-self:start; }
+    .article-action-feedback { flex-basis:100%; }
+  }
+</style>
 </body>
 </html>
